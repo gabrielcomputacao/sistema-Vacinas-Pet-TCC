@@ -1,22 +1,18 @@
+import { BrowserRouter,Routes,Route } from "react-router-dom"
+import Cadastro from "./components/pages/Cadastro";
+import Login from "./components/pages/Login";
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Login/>}/>
+            <Route path="/cadastro" element={<Cadastro/>} />
+        </Routes>
+    </BrowserRouter>
+
     </div>
   );
 }
