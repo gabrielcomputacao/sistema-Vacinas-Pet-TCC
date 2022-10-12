@@ -1,17 +1,15 @@
+import Footer from "../layout/Footer";
+import Navbar from "../layout/Navbar";
 
-import Footer from "../layout/Footer"
-import Navbar from "../layout/Navbar"
 
-
-function DashBoard(){
-    return (
-        <div>
-            <Navbar/>
-
-            <Footer/>
-        </div>
-    )
+function DashBoard() {
+  return (
+    <div>
+      <Navbar />
+      
+      <Footer />
+    </div>
+  );
 }
 
-export default DashBoard
-
+export default DashBoard;

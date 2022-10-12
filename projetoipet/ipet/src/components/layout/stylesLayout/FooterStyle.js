@@ -31,8 +31,37 @@ export const DivTexto = styled.div`
 
 export const DivContatos = styled.div`
 
+    h4{
+        text-align: center;
+    }
+
     ul{
         list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+    }
+    li{
+        margin: 1em .4em;
+    }
+
+    ul li a svg,
+    ul li a{
+        color: #222;
+        cursor: pointer;
+        font-size: 1.3em;
     }
     
 `
+
+export const Copy = styled.p`
+    color: #fff;
+    background-color: #222;
+    text-align: center;
+    padding: .4em;
+
+`
+
+
+
