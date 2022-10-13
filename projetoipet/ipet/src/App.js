@@ -15,8 +15,10 @@ function App() {
           <Route path="/" element={<Login/>}/>
 
             <Route path="/cadastro" element={<Cadastro/>} />
-            <Route path="/dashboard" element={<DashBoard/>} />
-            {/* <Route path="/dashboard/listar" element={<ListarPets/>} /> */}
+            <Route path="/dashboard" element={<DashBoard content="sobre"/>} />
+            <Route path="/listar" element={<DashBoard content="listar"/>} />
+            <Route path="/cadastrar-vacina" element={<DashBoard content="cadastrar"/>} />
+            <Route path="/listar-vacina" element={<DashBoard content="vacinas"/>} />
             
         </Routes>
     </BrowserRouter>
