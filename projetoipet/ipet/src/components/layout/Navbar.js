@@ -13,10 +13,10 @@ function Navbar() {
       <Navegacao>
         <ul>
           <li>
-            <Link>Meus Pet's</Link>
+            <Link to="/listar">Meus Pet's</Link>
           </li>
-          <li> <Link>Cadastrar Vacina</Link> </li>
-          <li> <Link>Listar Vacinas</Link> </li>
+          <li> <Link to="/cadastrar-vacina">Cadastrar Vacina</Link> </li>
+          <li> <Link to="/listar-vacina">Listar Vacinas</Link> </li>
         </ul>
       </Navegacao>
     </DivNavbar>
