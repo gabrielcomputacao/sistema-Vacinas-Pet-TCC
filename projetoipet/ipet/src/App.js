@@ -19,6 +19,7 @@ function App() {
             <Route path="/listar" element={<DashBoard content="listar"/>} />
             <Route path="/cadastrar-vacina" element={<DashBoard content="cadastrar"/>} />
             <Route path="/listar-vacina" element={<DashBoard content="vacinas"/>} />
+            <Route path="/animais-cadastro" element={<DashBoard content="animais"/>} />
             
         </Routes>
     </BrowserRouter>

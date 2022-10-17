@@ -5,7 +5,7 @@ import CadastrarVacinas from "./CadastrarVacinas";
 import ListarPets from "./ListarPets";
 import ListarVacinas from "./ListarVacinas";
 import Sobre from "./Sobre";
-
+import AnimaisCadastro from "./AnimaisCadastro"
 
 function DashBoard(props) {
 
@@ -20,6 +20,8 @@ function DashBoard(props) {
       }
       else if(content === "vacinas"){
         return <ListarVacinas/>
+      }else if(content === "animais"){
+        return <AnimaisCadastro/>
       }
   }
 

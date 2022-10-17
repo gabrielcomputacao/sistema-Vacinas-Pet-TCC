@@ -40,7 +40,7 @@ function Login() {
 
           <div>
             <Button text="Continuar" />
-            <ButtonLink tipo="button" text="Cadastrar" />
+            <ButtonLink tipo="button" text="Cadastrar" where="./cadastro"/>
           </div>
         </form>
       </div>
