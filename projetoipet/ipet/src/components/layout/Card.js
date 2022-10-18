@@ -1,5 +1,5 @@
 import { FaDog, FaCat, FaPaw,FaHorse} from "react-icons/fa";
-import {DivCards,DivCard,DivSvg} from "./stylesLayout/CardStyle"
+import {DivCards,DivCard,DivSvg,Pitens} from "./stylesLayout/CardStyle"
 
 
 function Card() {
@@ -14,11 +14,11 @@ function Card() {
         </DivSvg>
         <div>
           <div>
-            <p> <span>Nome</span> </p>
-            <p> <span>Nome</span> </p>
-            <p> <span>Nome</span> </p>
-            <p> <span>Nome</span> </p>
-            <p> <span>Nome</span> </p>
+            <Pitens> <span>Nome</span> </Pitens>
+            <Pitens> <span>Peso</span> </Pitens>
+            <Pitens> <span>Idade</span> </Pitens>
+            <Pitens> <span>Raça</span> </Pitens>
+            <Pitens> <span>Tipo</span> </Pitens>
           </div>
         </div>
       </DivCard>

@@ -27,10 +27,14 @@ export const DivSvg = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1.5em;
+    margin-bottom: 1.8em;
     
     svg{
         font-size: 54px;
         color: green;
     }
+`
+
+export const Pitens = styled.p`
+    margin:.4em 0;
 `

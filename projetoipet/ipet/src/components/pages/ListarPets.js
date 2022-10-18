@@ -19,12 +19,15 @@ function ListarPets() {
       <ButtonLink
         text="Cadastrar Pet"
         tipo="button"
-        where="./animais-cadastro"
+        where="/animais-cadastro"
       ></ButtonLink>
 
       <div>
         <h1>Seus Animais Animais</h1>
-        {numeroPet > 0 && <Card />}
+        {numeroPet > 0 ? <Card />
+        :
+        <h3>Não existe animais Cadastrados Ainda</h3>  
+      }
       </div>
     </section>
   );
