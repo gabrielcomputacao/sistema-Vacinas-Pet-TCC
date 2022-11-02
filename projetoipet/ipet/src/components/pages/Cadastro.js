@@ -11,7 +11,15 @@ function Cadastro() {
 
     function submitCadastro(e){
         e.preventDefault()
-        console.log(dadosCadastro)
+        fetch('http://localhost:3005/cadastrousuario',{
+          method:'post',
+          headers:{
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(dadosCadastro)
+        })
+
+
     }
 
     function cadastrarDados(e){
@@ -26,10 +34,9 @@ function Cadastro() {
         <h1>Cadastro  Ipet</h1>
         <form onSubmit={submitCadastro}>
           <Input handleOnChange={cadastrarDados} tipo="text" texto="Nome" />
-          <Input handleOnChange={cadastrarDados} tipo="text" texto="Nickname" />
-          <Input handleOnChange={cadastrarDados} tipo="email" texto="Email" />
-          <Input handleOnChange={cadastrarDados} tipo="text" texto="Telefone" />
-          <Input handleOnChange={cadastrarDados} tipo="number" texto="Idade" />
+         <Input handleOnChange={cadastrarDados} tipo="email" texto="Email" />
+          <Input handleOnChange={cadastrarDados} tipo="text" texto="Senha" />
+          <Input handleOnChange={cadastrarDados} tipo="password" texto="Tipo" />
 
           <Button text="Cadastrar" />
         </form>
