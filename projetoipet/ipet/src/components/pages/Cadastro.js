@@ -17,7 +17,9 @@ function Cadastro() {
               "Content-Type": "application/json"
           },
           body: JSON.stringify(dadosCadastro)
-        })
+        }).then( res => res.json())
+        .then( text => console.log(text))
+        .catch( error => console.log(error))
 
 
     }
@@ -35,8 +37,8 @@ function Cadastro() {
         <form onSubmit={submitCadastro}>
           <Input handleOnChange={cadastrarDados} tipo="text" texto="Nome" />
          <Input handleOnChange={cadastrarDados} tipo="email" texto="Email" />
-          <Input handleOnChange={cadastrarDados} tipo="text" texto="Senha" />
-          <Input handleOnChange={cadastrarDados} tipo="password" texto="Tipo" />
+          <Input handleOnChange={cadastrarDados} tipo="password" texto="Senha" />
+          <Input handleOnChange={cadastrarDados} tipo="text" texto="Tipo" />
 
           <Button text="Cadastrar" />
         </form>

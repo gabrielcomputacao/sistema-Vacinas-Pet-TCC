@@ -13,7 +13,9 @@ router.get("/cadastrousuario", async function (req, res) {
     res.json(usuarios)
 });
 router.post("/cadastrousuario", async function (req, res) {
-  console.log(req.body)
+    console.log(req.body.nome)
+    res.json(req.body)
+    
 });
 router.put("/cadastrousuario/:id", async function (req, resp) {});
 router.delete("/cadastrousuario/:id", async function (req, resp) {});
