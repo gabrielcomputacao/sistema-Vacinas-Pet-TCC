@@ -4,9 +4,12 @@ import Input from "../form/Input";
 import {Section} from "./stylepages/CadastroStyle"
 import gato from "../../img/gato.jpg"
 import fundo from "../../img/fundo_animais2.jpg"
+import Message from "../layout/Message"
 
 function Cadastro() {
 
+
+    const [message , setMessage] = useState()
     const [dadosCadastro,setDadosCadastro] = useState({})
 
     function submitCadastro(e){
@@ -18,7 +21,11 @@ function Cadastro() {
           },
           body: JSON.stringify(dadosCadastro)
         }).then( res => res.json())
-        .then( text => console.log(text))
+        .then( text => {
+          console.log(text)
+          setMessage('Cadastrado com Sucesso!')
+          return true
+        })
         .catch( error => console.log(error))
 
 
@@ -31,6 +38,7 @@ function Cadastro() {
 
   return (
     <Section background={fundo}>
+      {message && <Message msg={message}></Message>}
       <div>
         <img src={gato} alt="Ipet | Cadastro" />
         <h1>Cadastro  Ipet</h1>
