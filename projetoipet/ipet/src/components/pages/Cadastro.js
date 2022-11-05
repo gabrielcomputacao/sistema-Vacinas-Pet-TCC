@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {useNavigate} from "react-router-dom"
 import Button from "../form/Button";
 import Input from "../form/Input";
 import {Section} from "./stylepages/CadastroStyle"
@@ -8,7 +9,7 @@ import Message from "../layout/Message"
 
 function Cadastro() {
 
-
+    const navigate = useNavigate()
     const [message , setMessage] = useState()
     const [dadosCadastro,setDadosCadastro] = useState({})
 
@@ -24,7 +25,9 @@ function Cadastro() {
         .then( text => {
           console.log(text)
           setMessage('Cadastrado com Sucesso!')
-          return true
+          setTimeout(()=>{
+            navigate("/")
+          } , 4000)
         })
         .catch( error => console.log(error))
 

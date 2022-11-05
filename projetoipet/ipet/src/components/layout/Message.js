@@ -20,7 +20,7 @@ function Message({tipo, msg}){
             
             setVisible(false)
 
-        } , 4000)
+        } , 2000)
 
         return ()=>{
             clearTimeout(timer)
