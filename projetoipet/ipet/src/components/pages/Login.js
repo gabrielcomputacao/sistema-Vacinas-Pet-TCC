@@ -21,11 +21,16 @@ function Login() {
     }
 
     function submit(e){
-        e.preventDefault()
+        e.preventDefault();
 
-        /* mandar para o banco de dados e fazer a verifiacção se já tem a senha e o login */
+        fetch("http://localhost:3005/login" , {
+          method: "post",
+          headers:{
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(dados)
+        })
 
-        console.log(dados)
     }
 
   return (

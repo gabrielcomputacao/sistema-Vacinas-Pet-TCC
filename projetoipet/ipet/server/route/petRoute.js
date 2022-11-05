@@ -21,4 +21,8 @@ router.post("/cadastrousuario", async function (req, res) {
 router.put("/cadastrousuario/:id", async function (req, resp) {});
 router.delete("/cadastrousuario/:id", async function (req, resp) {});
 
+router.post("/login" , async function (req,res){
+    
+})
+
 module.exports = router;
