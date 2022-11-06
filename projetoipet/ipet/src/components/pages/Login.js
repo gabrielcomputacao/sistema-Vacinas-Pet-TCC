@@ -6,9 +6,11 @@ import ipetImage from "../../img/ipet.png"
 import fundoAnimais from "../../img/fundo_animais2.jpg"
 
 import { useState } from "react";
+import {useNavigate} from "react-router-dom"
 
 function Login() {
 
+    const navigate = useNavigate()
     const [dados,setDados] = useState({})
 
     function obterDados(e){
@@ -29,6 +31,20 @@ function Login() {
             "Content-Type": "application/json"
           },
           body: JSON.stringify(dados)
+        })
+        .then( resposta => resposta.json())
+        .then( data => {
+            if( data === 1){
+              /* mensagem deu certo */
+              setTimeout(()=>{
+                navigate("/dashboard")
+              } , 1500)
+            }else{
+              /* mensagem  */
+            }
+        })
+        .catch(error =>{
+          console.log(error)
         })
 
     }
