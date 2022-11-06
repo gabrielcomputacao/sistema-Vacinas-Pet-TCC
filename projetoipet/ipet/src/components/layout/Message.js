@@ -1,7 +1,7 @@
 
 import {useEffect, useState} from "react"
 
-import {SpanMessage} from "./stylesLayout/MessageStyle"
+import {Danger, Sucess} from "./stylesLayout/MessageStyle"
 
 function Message({tipo, msg}){
 
@@ -20,7 +20,7 @@ function Message({tipo, msg}){
             
             setVisible(false)
 
-        } , 2000)
+        } , 1500)
 
         return ()=>{
             clearTimeout(timer)
@@ -32,7 +32,10 @@ function Message({tipo, msg}){
     return(
         <>
             {
-                visible && <SpanMessage>{msg}</SpanMessage>
+                visible && tipo == "sucesso" && <Sucess>{msg}</Sucess>
+            }
+            {
+                visible && tipo == "danger" && <Danger>{msg}</Danger>
             }
         </>
         
