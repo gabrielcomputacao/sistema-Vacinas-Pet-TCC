@@ -20,7 +20,7 @@ function App() {
             <Route path="/cadastrar-vacina" element={<DashBoard content="cadastrar"/>} />
             <Route path="/listar-vacina" element={<DashBoard content="vacinas"/>} />
             <Route path="/animais-cadastro" element={<DashBoard content="animais"/>} />
-            
+            <Route path="/proprietario" element={<DashBoard content="proprietario" />}/>
         </Routes>
     </BrowserRouter>
 

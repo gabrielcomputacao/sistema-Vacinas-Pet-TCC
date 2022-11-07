@@ -6,6 +6,7 @@ import ListarPets from "./ListarPets";
 import ListarVacinas from "./ListarVacinas";
 import Sobre from "./Sobre";
 import AnimaisCadastro from "./AnimaisCadastro"
+import Proprietario from "./Proprietario";
 
 function DashBoard(props) {
 
@@ -22,7 +23,9 @@ function DashBoard(props) {
         return <ListarVacinas/>
       }else if(content === "animais"){
         return <AnimaisCadastro/>
-      }
+      }else if (content === "proprietario"){
+        return <Proprietario/>
+      } 
   }
 
 

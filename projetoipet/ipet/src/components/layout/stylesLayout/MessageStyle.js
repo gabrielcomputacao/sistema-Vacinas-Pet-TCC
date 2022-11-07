@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 export const SpanMessage = styled.span`
     display: block;
+    background-color: green;
     color: #222;
     font-weight: bold;
     width: 350px;

@@ -1,6 +1,7 @@
 
 import {DivFlex,DivContent} from "./stylepages/SobreStyle"
 import imagemFamily from "../../img/family_animals.webp"
+import ButtonLink from "../form/ButtonLink";
 
 
 function Sobre() {
@@ -20,9 +21,10 @@ function Sobre() {
             vermífugos e antiparasitários dos bichinhos através da marcação de
             vacinas.   
             </p>
-            
           </div>
+          <ButtonLink text="Cadastrar Proprietário" tipo="button" where="/proprietario"/>
         </DivContent>
+        
         <div>
           <img src={imagemFamily} alt="Ipet - Sistema de marcação de vacinas" />
         </div>
