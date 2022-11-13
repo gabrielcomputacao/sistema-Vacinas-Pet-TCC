@@ -7,14 +7,18 @@ import fundoAnimais from "../../img/fundo_animais2.jpg";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {useDispatch} from "react-redux"
 
 import Message from "../layout/Message";
+import { checkinUser } from "../../redux/slice.js";
 
 function Login() {
   const navigate = useNavigate();
   const [dados, setDados] = useState({});
   const [stateMessage, setStateMessage] = useState(false);
   const [unidadeMessage, setUnidadeMessage] = useState(0);
+
+  const dispatch = useDispatch()
 
   function obterDados(e) {
     /* se nao fazer o destruicting nos dados o setdados so vai setar o ultimo valor que for preenchido
@@ -36,9 +40,13 @@ function Login() {
     })
       .then((resposta) => resposta.json())
       .then((data) => {
-        if (data === 1) {
+        if (data.rowCount === 1) {
           setStateMessage(true);
           setUnidadeMessage(1);
+          dispatch(checkinUser({
+            name: data.rows[0].nome,
+            id : data.rows[0].id
+          }))
           setTimeout(()=>{
               setStateMessage(false)
                 navigate("/dashboard")

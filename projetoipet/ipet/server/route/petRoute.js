@@ -26,7 +26,7 @@ router.post("/login" , async function (req,res){
     const user = req.body;
 
     const check = await checkService.checkLoginService(user)
-    res.json(check.rowCount)
+    res.json(check)
 })
 
 module.exports = router;
