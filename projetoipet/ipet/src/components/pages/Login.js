@@ -9,12 +9,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Message from "../layout/Message";
+import { useDispatch } from "react-redux";
+import { checkUser } from "../../redux/test/testReduxToolkit.js";
 
 function Login() {
   const navigate = useNavigate();
   const [dados, setDados] = useState({});
   const [stateMessage, setStateMessage] = useState(false);
   const [unidadeMessage, setUnidadeMessage] = useState(0);
+  const dispacth = useDispatch();
+
 
   function obterDados(e) {
     /* se nao fazer o destruicting nos dados o setdados so vai setar o ultimo valor que for preenchido
@@ -39,6 +43,7 @@ function Login() {
         if (data === 1) {
           setStateMessage(true);
           setUnidadeMessage(1);
+          dispacth(checkUser({name:dados.usuario , id:0}))
           setTimeout(()=>{
               setStateMessage(false)
                 navigate("/dashboard")

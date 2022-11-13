@@ -8,7 +8,10 @@ import Sobre from "./Sobre";
 import AnimaisCadastro from "./AnimaisCadastro"
 import Proprietario from "./Proprietario";
 
+
 function DashBoard(props) {
+
+ 
 
   function renderizar(content){
       if(content === "sobre"){

@@ -2,6 +2,7 @@ import logo from "../../img/ipet.png";
 import { Link } from "react-router-dom";
 
 import {DivNavbar,Imagem,Navegacao} from "./stylesLayout/NavbarStyle"
+import IconUser from "./IconUser";
 
 function Navbar() {
   return (
@@ -19,6 +20,7 @@ function Navbar() {
           <li> <Link to="/listar-vacina">Listar Vacinas</Link> </li>
         </ul>
       </Navegacao>
+      <IconUser />
     </DivNavbar>
   );
 }
