@@ -9,6 +9,7 @@ qualquer lugar da aplicação
 const petService = require("../service/petService")
 const insertService = require("../service/insertService")
 const checkService = require("../service/checkLoginService")
+const insertEnd = require("../service/InsertEnderecoService")
 
 router.get("/cadastrousuario", async function (req, res) {
     const usuarios = await petService.getCadastroPessoa()
@@ -27,6 +28,14 @@ router.post("/login" , async function (req,res){
 
     const check = await checkService.checkLoginService(user)
     res.json(check)
+})
+
+router.post("/endereco", async function (req, res){
+    const user = req.body;
+
+    const resInsertEndereco = await insertEnd.insertEndereco(user);
+    res.json(resInsertEndereco)
+    
 })
 
 module.exports = router;

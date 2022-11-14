@@ -12,7 +12,7 @@ export const slice = createSlice({
         checkinUser(state, {payload}){
             return{
                 ...state,
-                iduser: payload.id,
+                iduser: payload.idusuario,
                 nome: payload.name,
             };
         }

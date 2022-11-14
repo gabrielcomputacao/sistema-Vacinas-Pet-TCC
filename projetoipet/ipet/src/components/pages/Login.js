@@ -45,7 +45,7 @@ function Login() {
           setUnidadeMessage(1);
           dispatch(checkinUser({
             name: data.rows[0].nome,
-            id : data.rows[0].id
+            idusuario : data.rows[0].id,
           }))
           setTimeout(()=>{
               setStateMessage(false)
