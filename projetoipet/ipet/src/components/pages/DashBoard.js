@@ -7,6 +7,7 @@ import ListarVacinas from "./ListarVacinas";
 import Sobre from "./Sobre";
 import AnimaisCadastro from "./AnimaisCadastro"
 import Endereco from "./Endereco";
+import Proprietario from "./Proprietario";
 
 function DashBoard(props) {
 
@@ -25,7 +26,9 @@ function DashBoard(props) {
         return <AnimaisCadastro/>
       }else if (content === "endereco"){
         return <Endereco/>
-      } 
+      }else if (content === "proprietario"){
+        return <Proprietario />
+      }
   }
 
 

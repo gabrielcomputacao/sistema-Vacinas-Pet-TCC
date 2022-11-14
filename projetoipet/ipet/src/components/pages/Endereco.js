@@ -6,10 +6,12 @@ import { DivCampos,DivImgContent } from "./stylepages/EnderecoStyle";
 import familiaAnimal from "../../img/family_animals2.webp";
 import { useSelector } from "react-redux";
 import {selectUser} from "../../redux/slice"
+import { useNavigate } from "react-router-dom";
 
 
 function Endereco() {
 
+  const navigate = useNavigate();
   const [dadosEndereco, setDadosEndereco] = useState({});
   const state = useSelector(selectUser)
 
@@ -29,7 +31,13 @@ function Endereco() {
       body: JSON.stringify(dadosEndereco)
     })
     .then( res => res.json())
-    .then( data => console.log(data))
+    .then( data => {
+
+      setTimeout(()=>{
+          navigate("/proprietario")
+          
+      },1500)
+    })
 
     
   }
