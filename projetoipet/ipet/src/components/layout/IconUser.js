@@ -8,7 +8,7 @@ function IconUser(){
     const state = useSelector(selectUser)
     const letraMaiuscula = state.nome[0].toUpperCase();
     const restante = state.nome.substring(1);
-    console.log(state)
+    
 
     return(
         <DivUsuario>

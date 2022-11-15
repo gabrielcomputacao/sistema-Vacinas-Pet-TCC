@@ -25,7 +25,7 @@ function Login() {
         com as ... ele separar e vai incluindo cada name como um atributo dentro do objeto dados
         */
     setDados({ ...dados, [e.target.name]: e.target.value });
-    console.log(dados);
+    /* console.log(dados); */
   }
 
   function submit(e) {
