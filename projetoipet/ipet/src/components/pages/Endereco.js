@@ -12,7 +12,7 @@ function Endereco() {
   const navigate = useNavigate();
   const [dadosEndereco, setDadosEndereco] = useState({});
   const state = useSelector(selectUser);
-   /*  const idusuario = "idusuario"; */
+   
     const id_state = state.iduser;
 
 

@@ -10,6 +10,7 @@ const petService = require("../service/petService")
 const insertService = require("../service/insertService")
 const checkService = require("../service/checkLoginService")
 const insertEnd = require("../service/InsertEnderecoService")
+const endId = require("../service/getEnderecoService")
 
 router.get("/cadastrousuario", async function (req, res) {
     const usuarios = await petService.getCadastroPessoa()
@@ -35,7 +36,14 @@ router.post("/endereco", async function (req, res){
 
     const resInsertEndereco = await insertEnd.insertEndereco(user);
     res.json(resInsertEndereco)
-    
+})
+
+router.post("/idendereco" , async function(req, res){
+        const idend = req.body;
+
+        const resIdEnd = await endId.getIdEnd(idend);
+
+        res.json(resIdEnd);
 })
 
 module.exports = router;
