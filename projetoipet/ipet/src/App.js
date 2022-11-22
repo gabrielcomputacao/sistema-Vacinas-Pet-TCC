@@ -2,6 +2,7 @@ import { BrowserRouter,Routes,Route } from "react-router-dom"
 import Cadastro from "./components/pages/Cadastro";
 import Login from "./components/pages/Login";
 import DashBoard from "./components/pages/DashBoard";
+import Endereco from "./components/pages/Endereco";
 
 /* import ListarPets from "./components/pages/ListarPets"; */
 
@@ -21,7 +22,7 @@ function App() {
             <Route path="/cadastrar-vacina" element={<DashBoard content="cadastrar"/>} />
             <Route path="/listar-vacina" element={<DashBoard content="vacinas"/>} />
             <Route path="/animais-cadastro" element={<DashBoard content="animais"/>} />
-            <Route path="/endereco" element={<DashBoard content="endereco" />}/>
+            <Route path="/endereco" element={ <Endereco/>} />
             <Route path="/proprietario" element={<DashBoard content="proprietario"/>} />
         </Routes>
     </BrowserRouter>

@@ -1,52 +1,37 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Button from "../form/Button";
 import Input from "../form/Input";
-import { DivCampos, DivImgContent } from "./stylepages/EnderecoStyle";
-
+import {
+  DivCampos,
+  DivImgContent,
+  DivEndereco,
+  SecEnd,
+} from "./stylepages/EnderecoStyle";
+import fundo from "../../img/fundo_animais2.jpg";
 import familiaAnimal from "../../img/family_animals2.webp";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/slice";
 import { useNavigate } from "react-router-dom";
 
 function Endereco() {
   const navigate = useNavigate();
   const [dadosEndereco, setDadosEndereco] = useState({});
-  const state = useSelector(selectUser);
-   
-    const id_state = state.iduser;
-
-
-  useEffect(() => {
-    
-    setDadosEndereco({
-      ...dadosEndereco,
-      ["idusuario"]: id_state,
-    });
-
-    
-  }, []);
-
-
 
   function enderecoSubmit(e) {
     e.preventDefault();
-    
 
-    fetch("http://localhost:3005/endereco" , {
-      method:"post",
-      headers:{
+    fetch("http://localhost:3005/endereco", {
+      method: "post",
+      headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(dadosEndereco)
+      body: JSON.stringify(dadosEndereco),
     })
-    .then( res => res.json())
-    .then( data => {
-
-      setTimeout(()=>{
-          navigate("/proprietario")
-          
-      },1500)
-    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setTimeout(() => {
+          navigate("/cadastro");
+        }, 1500);
+      })
+      .catch(ex => console.log(ex));
   }
 
   function handleEndereco(e) {
@@ -54,13 +39,15 @@ function Endereco() {
       ...dadosEndereco,
       [e.target.name]: e.target.value,
     });
+
+    console.log(dadosEndereco);
   }
 
   return (
-    <section>
-      <div>
+    <SecEnd back={fundo}>
+      <DivEndereco>
         <form onSubmit={enderecoSubmit}>
-          <h2>Endereço</h2>
+          <h2>Cadastre o Endereço</h2>
           <DivImgContent>
             <DivCampos>
               <div>
@@ -109,8 +96,8 @@ function Endereco() {
           </DivImgContent>
           <Button text="Próximo" />
         </form>
-      </div>
-    </section>
+      </DivEndereco>
+    </SecEnd>
   );
 }
 

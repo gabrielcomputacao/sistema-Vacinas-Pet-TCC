@@ -24,8 +24,6 @@ function DashBoard(props) {
         return <ListarVacinas/>
       }else if(content === "animais"){
         return <AnimaisCadastro/>
-      }else if (content === "endereco"){
-        return <Endereco/>
       }else if (content === "proprietario"){
         return <Proprietario />
       }

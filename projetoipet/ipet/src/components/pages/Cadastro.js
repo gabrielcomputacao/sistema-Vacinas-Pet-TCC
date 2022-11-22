@@ -44,7 +44,7 @@ function Cadastro() {
       {message && <Message msg={message}></Message>}
       <div>
         <img src={gato} alt="Ipet | Cadastro" />
-        <h1>Cadastro  Ipet</h1>
+        <h1>Cadastrar Usuário</h1>
         <form onSubmit={submitCadastro}>
           <Input handleOnChange={cadastrarDados} tipo="text" texto="Nome" />
          <Input handleOnChange={cadastrarDados} tipo="email" texto="Email" />

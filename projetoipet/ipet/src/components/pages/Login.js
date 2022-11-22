@@ -83,7 +83,7 @@ function Login() {
 
             <div>
               <Button text="Continuar" />
-              <ButtonLink tipo="button" text="Cadastrar" where="./cadastro" />
+              <ButtonLink tipo="button" text="Cadastrar" where="./endereco" />
             </div>
           </form>
         </div>

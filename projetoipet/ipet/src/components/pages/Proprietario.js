@@ -12,7 +12,7 @@ function Proprietario() {
   const state = useSelector(selectUser)
 
   const [proprietario , setProprietario] = useState({})
-
+  
 
   useEffect(()=>{
     const userid =state.iduser
