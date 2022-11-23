@@ -11,9 +11,16 @@ import fundo from "../../img/fundo_animais2.jpg";
 import familiaAnimal from "../../img/family_animals2.webp";
 import { useNavigate } from "react-router-dom";
 
+/* redux */
+import {useDispatch} from "react-redux"
+import {checkinEndereco} from "../../redux/slice"
+
 function Endereco() {
   const navigate = useNavigate();
   const [dadosEndereco, setDadosEndereco] = useState({});
+
+    const dispatch = useDispatch()
+
 
   function enderecoSubmit(e) {
     e.preventDefault();
@@ -27,6 +34,11 @@ function Endereco() {
     })
       .then((resp) => resp.json())
       .then((data) => {
+        dispatch(checkinEndereco({
+          rua: dadosEndereco.rua ,
+          cep : dadosEndereco.cep ,
+          numero : dadosEndereco.numero ,
+        }))
         setTimeout(() => {
           navigate("/cadastro");
         }, 1500);

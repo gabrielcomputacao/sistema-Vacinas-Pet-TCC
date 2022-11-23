@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
 import Button from "../form/Button";
 import Input from "../form/Input";
@@ -7,11 +7,21 @@ import gato from "../../img/gato.jpg"
 import fundo from "../../img/fundo_animais2.jpg"
 import Message from "../layout/Message"
 
+/* redux */
+import {useSelector} from "react-redux"
+
+
+
 function Cadastro() {
 
     const navigate = useNavigate()
     const [message , setMessage] = useState()
     const [dadosCadastro,setDadosCadastro] = useState({})
+    const state = useSelector((state)=> state.usercheck)
+
+    useEffect(()=>{
+      console.log(state)
+    } , [state])
 
     function submitCadastro(e){
         e.preventDefault()
