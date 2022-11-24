@@ -18,10 +18,34 @@ function Cadastro() {
     const [message , setMessage] = useState()
     const [dadosCadastro,setDadosCadastro] = useState({})
     const state = useSelector((state)=> state.usercheck)
+    const endereco = {
+      rua: state.endereco.rua,
+      numero: state.endereco.numero,
+      cep: state.endereco.cep,
+    }
+
 
     useEffect(()=>{
-      console.log(state)
-    } , [state])
+      console.log(endereco)
+
+      fetch('http://localhost:3005/idendereco' , {
+        method:'post',
+        headers:{
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(endereco)
+      })
+      .then( res => res.json())
+      .then( data =>{
+        setDadosCadastro({
+          ...dadosCadastro,
+          idendereco : data.rows.id_endereco,
+        })
+      })
+      .catch( ex => console.log(ex))
+    } , [])
+
+    
 
     function submitCadastro(e){
         e.preventDefault()
