@@ -37,15 +37,16 @@ function Cadastro() {
       })
       .then( res => res.json())
       .then( data =>{
+        console.log(data.rows[0].id_endereco)
         setDadosCadastro({
           ...dadosCadastro,
-          idendereco : data.rows.id_endereco,
+          ['idendereco'] : data.rows[0].id_endereco,
         })
       })
       .catch( ex => console.log(ex))
     } , [])
 
-    
+    console.log(dadosCadastro)
 
     function submitCadastro(e){
         e.preventDefault()
@@ -60,6 +61,7 @@ function Cadastro() {
           console.log(text)
           setMessage('Cadastrado com Sucesso!')
           setTimeout(()=>{
+            console.log(dadosCadastro)
             navigate("/")
           } , 4000)
         })
@@ -72,6 +74,8 @@ function Cadastro() {
         setDadosCadastro({...dadosCadastro,
             [e.target.name] : e.target.value})
     }
+
+   
 
   return (
     <Section background={fundo}>
