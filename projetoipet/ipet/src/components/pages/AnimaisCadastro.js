@@ -2,6 +2,7 @@ import Input from "../form/Input";
 import Button from "../form/Button"
 import {FlexForm} from "./stylepages/AnimaisStyle"
 import { useState } from "react";
+import Selection from "../form/Select";
 
 function AnimaisCadastro() {
 
@@ -15,6 +16,8 @@ function AnimaisCadastro() {
 
     function submitDadosAnimal(e){
         e.preventDefault()
+
+        
         console.log(animaisDados)
     }
 
@@ -25,7 +28,7 @@ function AnimaisCadastro() {
         <form onSubmit={submitDadosAnimal}>
           <FlexForm>
             <Input texto="Nome" tipo="text" handleOnChange={capturarDadosAnimal}/>
-            <Input texto="Proprietário" tipo="text" handleOnChange={capturarDadosAnimal}/>
+            <Selection text="Proprietário" name='proprietario' handleOnChange={capturarDadosAnimal}/>
             <Input texto="Data Nascimento" tipo="text" placeholder="01/01/2001"handleOnChange={capturarDadosAnimal}/>
             <Input texto="Sexo" tipo="text" handleOnChange={capturarDadosAnimal}/>
             <Input texto="Tipo" tipo="text" handleOnChange={capturarDadosAnimal}/>

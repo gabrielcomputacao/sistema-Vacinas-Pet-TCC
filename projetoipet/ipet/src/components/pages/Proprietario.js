@@ -5,40 +5,23 @@ import {DivFlexProp} from "./stylepages/ProprietarioStyle"
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {selectUser} from "../../redux/slice"
-
+import {useNavigate} from 'react-router-dom'
 
 function Proprietario() {
 
   const state = useSelector(selectUser)
-
+  const navigate = useNavigate()
   const [proprietario , setProprietario] = useState({})
   
 
   useEffect(()=>{
     const userid =state.iduser
-    const idUser ={
-      idusuario : userid,
-    } 
-    console.log(userid)
-
-    fetch("http://localhost:3005/idendereco",{
-      method: "post",
-      headers:{
-        "Content-Type" : "application/json"
-      },
-      body: JSON.stringify(idUser)
+    
+    setProprietario({
+      ...proprietario,
+      ['id_user'] : userid ,
     })
-    .then( res => res.json())
-    .then(dados =>{
-      /* console.log(dados.rows[0].id_endereco) */
 
-      setProprietario({
-        ...proprietario,
-        ["cod_endereco"] : dados.rows[0].id_endereco,
-      })
-
-      
-    })
   }, [])
 
   /* console.log(proprietario) */
@@ -52,9 +35,24 @@ function Proprietario() {
 
   function submitProprietario(e){
     e.preventDefault()
-
     console.log(proprietario)
 
+    fetch('http://localhost:3005/cadproprietario' , {
+      method: 'post',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body : JSON.stringify(proprietario)
+    })
+    .then( res => res.json())
+    .then(data => {
+      console.log(data)
+
+      setTimeout(()=>{
+        navigate('/dashboard')
+      } , 1500)
+    })
+    .catch( ex => console.log(ex))
 
   }
 
