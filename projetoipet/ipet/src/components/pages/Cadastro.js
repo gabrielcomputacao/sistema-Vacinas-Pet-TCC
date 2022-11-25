@@ -50,6 +50,7 @@ function Cadastro() {
 
     function submitCadastro(e){
         e.preventDefault()
+        console.log(dadosCadastro)
         fetch('http://localhost:3005/cadastrousuario',{
           method:'post',
           headers:{
@@ -61,7 +62,7 @@ function Cadastro() {
           console.log(text)
           setMessage('Cadastrado com Sucesso!')
           setTimeout(()=>{
-            console.log(dadosCadastro)
+            
             navigate("/")
           } , 4000)
         })

@@ -22,7 +22,7 @@ function Sobre() {
             vacinas.   
             </p>
           </div>
-          <ButtonLink text="Cadastrar Proprietário" tipo="button" where="/endereco"/>
+          <ButtonLink text="Cadastrar Proprietário" tipo="button" where="/proprietario"/>
         </DivContent>
         
         <div>
