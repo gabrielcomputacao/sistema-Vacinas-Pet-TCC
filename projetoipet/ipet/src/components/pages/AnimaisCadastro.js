@@ -1,4 +1,5 @@
 import Input from "../form/Input";
+import InputCaracter from "../form/InputCaracter";
 import Button from "../form/Button"
 import {FlexForm} from "./stylepages/AnimaisStyle"
 import { useEffect, useState } from "react";
@@ -42,6 +43,10 @@ function AnimaisCadastro() {
     function submitDadosAnimal(e){
         e.preventDefault()
 
+        setAnimaisDados({ ...animaisDados,
+          ['coduser'] : iduser
+        })
+
         fetch( 'http://localhost:3005/cadastroanimais' , {
           method: 'post',
           headers:{
@@ -66,16 +71,17 @@ function AnimaisCadastro() {
           <FlexForm>
             <Input texto="Nome" tipo="text" handleOnChange={capturarDadosAnimal}/>
             <Selection text="Proprietário" options={nomes} name='proprietario' handleOnChange={capturarDadosAnimal}/>
-            <Input texto="Data Nascimento" tipo="text" placeholder="01/01/2001"handleOnChange={capturarDadosAnimal}/>
+            <InputCaracter texto="Data Nascimento" textoNome="nascimento"  tipo="text" placeholder="01/01/2001"handleOnChange={capturarDadosAnimal}/>
             <Input texto="Sexo" tipo="text" handleOnChange={capturarDadosAnimal}/>
             <Input texto="Tipo" tipo="text" handleOnChange={capturarDadosAnimal}/>
             <Input texto="Pelagem" tipo="text" handleOnChange={capturarDadosAnimal}/>
-            <Input texto="Doenças/Alergias" tipo="text" handleOnChange={capturarDadosAnimal}/>
-            <Input texto="Observações" tipo="text" handleOnChange={capturarDadosAnimal}/>
+            <InputCaracter texto="Doença" textoNome="doenca" tipo="text" handleOnChange={capturarDadosAnimal}/>
+            <InputCaracter texto="Alergias" textoNome="alergia" tipo="text" handleOnChange={capturarDadosAnimal}/>
+            <InputCaracter texto="Observações" textoNome="obs" tipo="text" handleOnChange={capturarDadosAnimal}/>
             <Input texto="Peso" tipo="number" placeholder="Em Kg" handleOnChange={capturarDadosAnimal}/>
             <Input texto="Tamanho" tipo="number" placeholder="Em Metros" handleOnChange={capturarDadosAnimal}/>
-            <Input texto="Raça" tipo="text" handleOnChange={capturarDadosAnimal}/>
-            <Input texto="Espécie" tipo="text" handleOnChange={capturarDadosAnimal}/>
+            <InputCaracter texto="Raça" textoNome="raca" tipo="text" handleOnChange={capturarDadosAnimal}/>
+            <InputCaracter texto="Espécie" textoNome="especie" tipo="text" handleOnChange={capturarDadosAnimal}/>
           </FlexForm>
           <Button text="Enviar Cadastro"/>
         </form>
