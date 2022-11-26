@@ -42,6 +42,18 @@ function AnimaisCadastro() {
     function submitDadosAnimal(e){
         e.preventDefault()
 
+        fetch( 'http://localhost:3005/cadastroanimais' , {
+          method: 'post',
+          headers:{
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(animaisDados)
+        })
+        .then( res => res.json())
+        .then(data =>{
+          console.log(data)
+        })
+        .catch( ex => console.log(ex))
         
         console.log(animaisDados)
     }

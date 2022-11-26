@@ -64,6 +64,12 @@ router.get('/getpropnomes/:id' , async function(req,res){
 
 })
 
+router.post('/cadastroanimais' , async function(req, res){
+    const animais = req.body;
+
+    
+})
+
 
 
 module.exports = router;
