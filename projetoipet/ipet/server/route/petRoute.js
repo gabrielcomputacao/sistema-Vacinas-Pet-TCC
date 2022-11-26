@@ -12,6 +12,7 @@ const checkService = require("../service/checkLoginService")
 const insertEnd = require("../service/InsertEnderecoService")
 const endId = require("../service/getEndService")
 const insertProp= require('../service/insertProprietarioService')
+const insertPropNomes = require("../service/getProprietarioService")
 
 router.get("/cadastrousuario", async function (req, res) {
     const usuarios = await petService.getCadastroPessoa()
@@ -53,5 +54,16 @@ router.post('/cadproprietario', async function(req , res){
 
     res.json(resProp)
 })
+
+router.get('/getpropnomes/:id' , async function(req,res){
+    const numeroUser = req.params.id;
+
+    const nomesProp = await insertPropNomes.getNomesProp(numeroUser)
+
+    res.json(nomesProp)
+
+})
+
+
 
 module.exports = router;

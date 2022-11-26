@@ -1,4 +1,4 @@
-const database = require('../infra/database/database')
+const database = require('../infra/database/poolDatabase')
 
 exports.insertProprietario = async function (proprietario){
 
