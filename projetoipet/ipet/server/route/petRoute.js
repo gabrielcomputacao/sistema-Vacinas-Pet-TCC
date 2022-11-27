@@ -14,7 +14,7 @@ const endId = require("../service/getEndService")
 const insertProp= require('../service/insertProprietarioService')
 const insertPropNomes = require("../service/getProprietarioService")
 const insertAnimal = require("../service/insertAnimalService")
-
+const getAnimal = require("../service/getAnimalService")
 
 router.get("/cadastrousuario", async function (req, res) {
     const usuarios = await petService.getCadastroPessoa()
@@ -74,6 +74,12 @@ router.post('/cadastroanimais' , async function(req, res){
     res.json(cadastroAnimal);
 })
 
+router.get('/getanimais' , async function(req,res){
+
+        const animais = await getAnimal.getAnimalService();
+
+        res.json(animais)
+})
 
 
 module.exports = router;

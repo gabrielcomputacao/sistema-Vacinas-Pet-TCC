@@ -1,28 +1,45 @@
-import { FaDog, FaCat, FaPaw,FaHorse} from "react-icons/fa";
-import {DivCards,DivCard,DivSvg,Pitens} from "./stylesLayout/CardStyle"
+import { useState } from "react";
+import { FaDog,FaTrashAlt,FaPencilAlt} from "react-icons/fa";
+import {DivCards,DivCard,DivSvg,Pitens,ButtonStyled,DivBut} from "./stylesLayout/CardStyle"
 
 
-function Card() {
+function Card({animal}) {
+
+  const [stateDelet,setStateDelet] = useState(false);
+
+  function deletar(){
+      setStateDelet(true)
+  }
+
+
   return (
     <DivCards>
+      { stateDelet && <></>}
       <DivCard>
+      <DivBut>
+        <ButtonStyled type="button" > <FaPencilAlt/>   Editar</ButtonStyled>
+        <ButtonStyled type="button" onClick={deletar}><FaTrashAlt/> Deletar</ButtonStyled>
+      </DivBut>
         <DivSvg>
-          <FaCat />
           <FaDog />
-          <FaPaw />
-          <FaHorse />
         </DivSvg>
         <div>
           <div>
-            <Pitens> <span>Nome</span> </Pitens>
-            <Pitens> <span>Peso</span> </Pitens>
-            <Pitens> <span>Idade</span> </Pitens>
-            <Pitens> <span>Raça</span> </Pitens>
-            <Pitens> <span>Tipo</span> </Pitens>
+            <Pitens> <span>Nome: {animal.nome}</span> </Pitens>
+            <hr />
+            <Pitens> <span>Peso: {animal.peso}</span> </Pitens>
+            <hr />
+            <Pitens> <span>Idade: {animal.data_nascimento}</span> </Pitens>
+            <hr />
+            <Pitens> <span>Raça: {animal.raca}</span> </Pitens>
+            <hr />
+            <Pitens> <span>Espécie: {animal.especie}</span> </Pitens>
+            <hr />
           </div>
         </div>
       </DivCard>
     </DivCards>
+  
   );
 }
 
