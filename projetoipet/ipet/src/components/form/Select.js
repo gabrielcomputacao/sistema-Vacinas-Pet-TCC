@@ -6,7 +6,7 @@ function Selection({name,text,options,handleOnChange,value}){
         <div>
             <LabelSec htmlFor={name}>{text}</LabelSec>
             <SelectionStyled name={name} id={name} onChange={handleOnChange}>
-                <option value="1" disabled={true}>Selecione ...</option>
+                <option value="1" selected disabled={true} >Selecione ...</option>
                 {
                     options.map( (op)=> (
                         <option value={op.nome} key={op.nome}>

@@ -13,6 +13,8 @@ const insertEnd = require("../service/InsertEnderecoService")
 const endId = require("../service/getEndService")
 const insertProp= require('../service/insertProprietarioService')
 const insertPropNomes = require("../service/getProprietarioService")
+const insertAnimal = require("../service/insertAnimalService")
+
 
 router.get("/cadastrousuario", async function (req, res) {
     const usuarios = await petService.getCadastroPessoa()
@@ -67,7 +69,9 @@ router.get('/getpropnomes/:id' , async function(req,res){
 router.post('/cadastroanimais' , async function(req, res){
     const animais = req.body;
 
-    
+    const cadastroAnimal = await insertAnimal.cadAnimalService(animais); 
+
+    res.json(cadastroAnimal);
 })
 
 
