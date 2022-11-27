@@ -16,7 +16,7 @@ function ListarPets() {
         getAnimais(data.rows);
       })
       .catch((ex) => console.log(ex));
-  }, []);
+  }, [animais]);
 
   return (
     <section>
@@ -40,7 +40,9 @@ function ListarPets() {
         <DivAnimais>
           {numeroPet > 0 &&
             animais.map((element, index) => (
+              
               <Card animal={element} contador={index} key={index} />
+              
             ))}
 
           {numeroPet < 0 && <h3>Não existe animais Cadastrados Ainda</h3>}

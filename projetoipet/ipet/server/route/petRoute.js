@@ -15,6 +15,7 @@ const insertProp= require('../service/insertProprietarioService')
 const insertPropNomes = require("../service/getProprietarioService")
 const insertAnimal = require("../service/insertAnimalService")
 const getAnimal = require("../service/getAnimalService")
+const deletAnimal = require("../service/deletAnimalService")
 
 router.get("/cadastrousuario", async function (req, res) {
     const usuarios = await petService.getCadastroPessoa()
@@ -26,7 +27,7 @@ router.post("/cadastrousuario", async function (req, res) {
     res.json(respostaInsert)
 });
 router.put("/cadastrousuario/:id", async function (req, resp) {});
-router.delete("/cadastrousuario/:id", async function (req, resp) {});
+
 
 router.post("/login" , async function (req,res){
     const user = req.body;
@@ -80,6 +81,15 @@ router.get('/getanimais' , async function(req,res){
 
         res.json(animais)
 })
+
+router.delete("/deletanimal/:id", async function (req, resp) {
+    const idanimal = req.params.id;
+   
+    const result = await deletAnimal.deletAnimais(idanimal);
+
+    resp.json(result)
+
+});
 
 
 module.exports = router;
