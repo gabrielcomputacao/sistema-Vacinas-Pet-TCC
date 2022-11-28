@@ -75,19 +75,19 @@ router.post('/cadastroanimais' , async function(req, res){
     res.json(cadastroAnimal);
 })
 
-router.get('/getanimais' , async function(req,res){
+router.get('/getanimais' , async function(req,res,next){
 
         const animais = await getAnimal.getAnimalService();
 
         res.json(animais)
 })
 
-router.delete("/deletanimal/:id", async function (req, resp) {
+router.delete("/deletanimal/:id", async function (req, res) {
     const idanimal = req.params.id;
    
     const result = await deletAnimal.deletAnimais(idanimal);
 
-    resp.json(result)
+    res.json(result)
 
 });
 

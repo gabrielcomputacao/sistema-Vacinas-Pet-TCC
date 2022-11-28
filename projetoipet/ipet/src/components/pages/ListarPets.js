@@ -8,7 +8,12 @@ function ListarPets() {
   const [animais, getAnimais] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:3005/getanimais")
+    fetch("http://localhost:3005/getanimais",{
+      method:'GET',
+      headers:{
+        "Content-Type": "application/json"
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data.rows);
@@ -16,7 +21,7 @@ function ListarPets() {
         getAnimais(data.rows);
       })
       .catch((ex) => console.log(ex));
-  }, [animais]);
+  }, []);
 
   return (
     <section>
@@ -41,7 +46,7 @@ function ListarPets() {
           {numeroPet > 0 &&
             animais.map((element, index) => (
               
-              <Card animal={element} contador={index} key={index} />
+              <Card animal={element} contador={index} key={index}/>
               
             ))}
 

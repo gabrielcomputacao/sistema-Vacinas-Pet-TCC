@@ -24,6 +24,7 @@ function Card({ animal }) {
           idanimais={animal.id_animal}
           setStateVisible={setStateDelet}
           nome={animal.nome}
+          
         />
       )}
       <DivCard>

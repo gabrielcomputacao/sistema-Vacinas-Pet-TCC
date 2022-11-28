@@ -16,22 +16,23 @@ function AnimaisCadastro() {
     const navigate = useNavigate();
 
     useEffect(()=>{
-      console.log(iduser)
 
+      console.log(iduser)
+      const coduser = 'coduser'
       setAnimaisDados({ ...animaisDados,
-        ['coduser'] : iduser
+        [coduser] : iduser
       })
 
       fetch(`http://localhost:3005/getpropnomes/${iduser}`, {
-        method: 'get',
+        method: 'GET',
         headers:{
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
       })
-      .then( res => res.json())
-      .then( data => {
+      .then( (res) => res.json())
+      .then( (data) => {
           setNomes(data.rows)
-          
+          console.log(data.rows)
           /* console.log(nomes) */
       })
       .catch( ex => console.log(ex))

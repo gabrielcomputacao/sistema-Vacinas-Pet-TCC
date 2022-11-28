@@ -5,13 +5,13 @@ function Confirmar({idanimais, setStateVisible, nome}){
 
     function deletarAnimal(idanimal){
         fetch(`http://localhost:3005/deletanimal/${idanimal}` , {
-            method: 'delete',
+            method: 'DELETE',
             headers:{
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             }
         })
-        .then(res => res.json())
-        .then( data =>{
+        .then((res) => res.json())
+        .then( (data) =>{
             console.log(data)
         })
         .catch( ex => console.log(ex))
@@ -21,10 +21,13 @@ function Confirmar({idanimais, setStateVisible, nome}){
         <DivConfirm>
             <h3>Deseja confirmar exclusão do Animal: {nome}?</h3>
             <button type="button" onClick={()=>{
+                console.log(idanimais)
+
                 deletarAnimal(idanimais)
                 setTimeout(()=>{
                     setStateVisible(false)
                 }, 1500)
+                
             }}>Sim</button>
             <button type="button" onClick={()=>{
                 setStateVisible(false)
