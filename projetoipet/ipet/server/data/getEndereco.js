@@ -5,10 +5,10 @@ exports.getEnderecoId = async function(idend){
 
     try {
 
-        database.connect();
+        const dataB = await database();
         const sql = "SELECT id_endereco from endereco WHERE id_userend=$1";
         let values = [idend.idusuario]
-        const dados = await database.query(sql,values) ;
+        const dados = await dataB.query(sql,values) ;
 
         return dados;
 

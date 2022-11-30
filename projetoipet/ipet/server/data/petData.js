@@ -1,11 +1,11 @@
-const database = require("../infra/database/database")
+const database = require("../infra/database/poolDatabase")
 
 exports.getCadastroPessoa = function(){
 
     try{
-        database.connect();
-        console.log("conexão feita com sucesso")
-        const results = database.query("SELECT * FROM usuario").then(res =>{
+        const dataB = database();
+        
+        const results = dataB.query("SELECT * FROM usuario").then(res =>{
             const rows = res.rows;
             return rows;
         })

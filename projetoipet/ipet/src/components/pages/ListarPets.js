@@ -50,7 +50,7 @@ function ListarPets() {
               
             ))}
 
-          {numeroPet < 0 && <h3>Não existe animais Cadastrados Ainda</h3>}
+          {numeroPet == 0 && <h3>Não existe animais Cadastrados Ainda</h3>}
         </DivAnimais>
       </div>
     </section>

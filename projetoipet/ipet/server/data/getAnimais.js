@@ -5,11 +5,12 @@ const database = require("../infra/database/poolDatabase")
 exports.getAnimais = async function(){
 
     try {
-        database.connect();
+        const dataB = await database();
         const sql = "SELECT *from animal";
-        const animais = await database.query(sql);
+        const animais = await dataB.query(sql);
 
         return animais;
+        
     } catch (error) {
         console.log(error)
     }

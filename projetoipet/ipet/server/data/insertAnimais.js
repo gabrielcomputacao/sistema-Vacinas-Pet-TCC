@@ -2,7 +2,7 @@ const database = require("../infra/database/poolDatabase");
 
 exports.insertAnimal = async function (animal) {
   try {
-    database.connect();
+    const dataB = database();
     const sql =
       "INSERT INTO animal(nome,data_nascimento,sexo,pelagem,alergia,doenca,obs,peso,tamanho,raca,especie,nome_proprietario,cod_usuario) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)";
     const values = [
@@ -21,7 +21,7 @@ exports.insertAnimal = async function (animal) {
       animal.coduser,
     ];
 
-    const result = await database.query(sql, values);
+    const result = await dataB.query(sql, values);
 
     return result;
 

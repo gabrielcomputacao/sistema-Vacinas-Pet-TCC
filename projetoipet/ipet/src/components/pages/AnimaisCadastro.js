@@ -12,32 +12,15 @@ function AnimaisCadastro() {
     const stateUser = useSelector( state =>  state.usercheck)
     const [animaisDados,setAnimaisDados] = useState({})
     const iduser = stateUser.iduser;
-    const [nomes,setNomes] = useState([])
+    
     const navigate = useNavigate();
 
     useEffect(()=>{
-
-      console.log(iduser)
       const coduser = 'coduser'
       setAnimaisDados({ ...animaisDados,
         [coduser] : iduser
       })
-
-      fetch(`http://localhost:3005/getpropnomes/${iduser}`, {
-        method: 'GET',
-        headers:{
-          "Content-Type": "application/json",
-        },
-      })
-      .then( (res) => res.json())
-      .then( (data) => {
-          setNomes(data.rows)
-          console.log(data.rows)
-          /* console.log(nomes) */
-      })
-      .catch( ex => console.log(ex))
-
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+      
     },[])
 
 
@@ -89,7 +72,7 @@ function AnimaisCadastro() {
         <form onSubmit={submitDadosAnimal}>
           <FlexForm>
             <Input texto="Nome" tipo="text" handleOnChange={capturarDadosAnimal}/>
-            <Selection text="Proprietário" options={nomes} name='proprietario' handleOnChange={capturaSelectAnimal}/>
+            <Selection text="Proprietário"  name='proprietario' handleOnChange={capturaSelectAnimal}/>
             <InputCaracter texto="Data Nascimento" textoNome="nascimento"  tipo="text" placeholder="01/01/2001"handleOnChange={capturarDadosAnimal}/>
             <Input texto="Sexo" tipo="text" handleOnChange={capturarDadosAnimal}/>
             <Input texto="Pelagem" tipo="text" handleOnChange={capturarDadosAnimal}/>
