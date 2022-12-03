@@ -8,7 +8,19 @@ function Selection({ name, text, options, handleOnChange, value }) {
   const [nomes, setNomes] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3005/getpropnomes/${iduser}`, {
+
+    const selectProprietarios = async ()=>{
+      const response = await fetch(`http://localhost:3005/getpropnomes/${iduser}`);
+      const responseJson = await response.json();
+
+      console.log(responseJson.rows)
+      setNomes(responseJson.rows);
+    }
+
+    selectProprietarios();
+
+
+    /* fetch(`http://localhost:3005/getpropnomes/${iduser}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -18,9 +30,9 @@ function Selection({ name, text, options, handleOnChange, value }) {
       .then((data) => {
         setNomes(data.rows);
         console.log(data.rows);
-        /* console.log(nomes) */
+        /* console.log(nomes) 
       })
-      .catch((ex) => console.log(ex));
+      .catch((ex) => console.log(ex)); */
   }, []);
 
   return (

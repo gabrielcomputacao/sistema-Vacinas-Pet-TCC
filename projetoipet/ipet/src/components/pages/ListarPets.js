@@ -5,7 +5,7 @@ import {DivAnimais} from "./stylepages/ListarPetsStyle"
 
 function ListarPets() {
   const [numeroPet, setnumeroPet] = useState(0);
-  const [animais, getAnimais] = useState({});
+  const [animais, setAnimais] = useState({});
 
   useEffect(() => {
     fetch("http://localhost:3005/getanimais",{
@@ -18,7 +18,7 @@ function ListarPets() {
       .then((data) => {
         console.log(data.rows);
         setnumeroPet(data.rowCount);
-        getAnimais(data.rows);
+        setAnimais(data.rows);
       })
       .catch((ex) => console.log(ex));
   }, []);
@@ -46,7 +46,7 @@ function ListarPets() {
           {numeroPet > 0 &&
             animais.map((element, index) => (
               
-              <Card animal={element} contador={index} key={index}/>
+              <Card animal={element} contador={index} key={index} listaAnimais={animais} setListaAnimais={setAnimais}/>
               
             ))}
 

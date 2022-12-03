@@ -10,7 +10,7 @@ import {
   DivBut,
 } from "./stylesLayout/CardStyle";
 
-function Card({ animal }) {
+function Card({ animal,listaAnimais,setListaAnimais }) {
   const [stateDelet, setStateDelet] = useState(false);
 
   function deletar() {
@@ -24,7 +24,8 @@ function Card({ animal }) {
           idanimais={animal.id_animal}
           setStateVisible={setStateDelet}
           nome={animal.nome}
-          
+          listaA = {listaAnimais}
+          setAnimais = {setListaAnimais}
         />
       )}
       <DivCard>
