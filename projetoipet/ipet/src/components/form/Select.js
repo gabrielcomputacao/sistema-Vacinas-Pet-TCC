@@ -38,7 +38,7 @@ function Selection({ name, text, options, handleOnChange, value }) {
   return (
     <div>
       <LabelSec htmlFor={name}>{text}</LabelSec>
-      <SelectionStyled name={name} id={name} onChange={handleOnChange}>
+      <SelectionStyled name={name} id={name} onChange={handleOnChange} value={value || ""}>
         <option value="1" selected disabled={true}>
           Selecione ...
         </option>

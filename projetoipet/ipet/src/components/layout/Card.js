@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaDog, FaTrashAlt, FaPencilAlt } from "react-icons/fa";
+import EditAnimal from "../pages/EditAnimal";
 import Confirmar from "./Confirmar";
 import {
   DivCards,
@@ -11,10 +12,15 @@ import {
 } from "./stylesLayout/CardStyle";
 
 function Card({ animal,listaAnimais,setListaAnimais }) {
-  const [stateDelet, setStateDelet] = useState(false);
+const [stateDelet, setStateDelet] = useState(false);
+const [stateEdit,setStateEdit] = useState(false);
 
   function deletar() {
     setStateDelet(true);
+  }
+
+  function edit(){
+    setStateEdit(true);
   }
 
   return (
@@ -28,9 +34,18 @@ function Card({ animal,listaAnimais,setListaAnimais }) {
           setAnimais = {setListaAnimais}
         />
       )}
+      {
+        stateEdit && (
+          <EditAnimal 
+            editAnimal={animal}
+            setEditVisible={setStateEdit}
+          />
+        )
+
+      }
       <DivCard>
         <DivBut>
-          <ButtonStyled type="button">
+          <ButtonStyled type="button" onClick={edit}>
             <FaPencilAlt /> Editar
           </ButtonStyled>
           <ButtonStyled type="button" onClick={deletar}>

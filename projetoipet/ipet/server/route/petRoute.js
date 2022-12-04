@@ -91,5 +91,12 @@ router.delete("/deletanimal/:id", async function (req, res) {
 
 });
 
+router.patch("/editanimal" , async function(req, res){
+    const animalEdit = req.body;
+
+    
+
+})
+
 
 module.exports = router;
