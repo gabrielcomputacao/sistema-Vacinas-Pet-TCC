@@ -16,6 +16,7 @@ const insertPropNomes = require("../service/getProprietarioService")
 const insertAnimal = require("../service/insertAnimalService")
 const getAnimal = require("../service/getAnimalService")
 const deletAnimal = require("../service/deletAnimalService")
+const editAnimal = require("../service/insertEditarAnimalService")
 
 router.get("/cadastrousuario", async function (req, res) {
     const usuarios = await petService.getCadastroPessoa()
@@ -93,9 +94,9 @@ router.delete("/deletanimal/:id", async function (req, res) {
 
 router.patch("/editanimal" , async function(req, res){
     const animalEdit = req.body;
-
+    const value = await editAnimal.editAnimalService(animalEdit)
     
-
+    res.json(value)
 })
 
 

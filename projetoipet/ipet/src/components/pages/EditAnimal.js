@@ -33,14 +33,18 @@ function EditAnimal({editAnimal,setStateEdit}) {
                 headers:{
                     'Content-Type': 'application/json'
                 },
-                method: 'PATCH',
+                method: 'UPDATE',
                 body: JSON.stringify(editarAnimal),
-
-
-
             })
+            .then( resp => resp.json())
+            .then( data =>{
+              console.log(data)
 
-
+              setTimeout(()=>{
+                setStateEdit(false)
+              }, 1000)
+              
+            })
       }
       
   return (
@@ -50,8 +54,8 @@ function EditAnimal({editAnimal,setStateEdit}) {
           <Input
             texto="Nome"
             tipo="text"
+            placeholder = {editAnimal.nome ? editAnimal.nome : ""}
             handleOnChange={capturarEditAnimal}
-            value={editAnimal.nome ? editAnimal.nome : ""}
           />
           <Selection
             text="Proprietário"
