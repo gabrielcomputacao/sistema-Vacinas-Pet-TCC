@@ -61,76 +61,73 @@ function EditAnimal({editAnimal,setStateEdit}) {
             text="Proprietário"
             name="proprietario"
             handleOnChange={capturaSelectEditAnimal}
-            value={editAnimal.proprietario ? editAnimal.proprietario : ""}
+            placeholder ={editAnimal.proprietario ? editAnimal.proprietario : ""}
           />
           <InputCaracter
             texto="Data Nascimento"
             textoNome="nascimento"
             tipo="text"
-            placeholder="01/01/2001"
             handleOnChange={capturarEditAnimal}
-            value={editAnimal.data_nascimento ? editAnimal.data_nascimento : ""}
+            placeholder ={editAnimal.data_nascimento ? editAnimal.data_nascimento : ""}
           />
           <Input
             texto="Sexo"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            value={editAnimal.sexo ? editAnimal.sexo : ""}
+            placeholder ={editAnimal.sexo ? editAnimal.sexo : ""}
           />
           <Input
             texto="Pelagem"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            value={editAnimal.pelagem ? editAnimal.pelagem : ""}
+            placeholder ={editAnimal.pelagem ? editAnimal.pelagem : ""}
           />
           <InputCaracter
             texto="Doença"
             textoNome="doenca"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            value={editAnimal.doenca ? editAnimal.doenca : ""}
+            placeholder ={editAnimal.doenca ? editAnimal.doenca : ""}
           />
           <InputCaracter
             texto="Alergias"
             textoNome="alergia"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            value={editAnimal.alergia ? editAnimal.alergia : ""}
+            placeholder ={editAnimal.alergia ? editAnimal.alergia : ""}
           />
           <InputCaracter
             texto="Observações"
             textoNome="obs"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            value={editAnimal.obs ? editAnimal.obs : ""}
+            placeholder ={editAnimal.obs ? editAnimal.obs : ""}
           />
           <Input
             texto="Peso"
             tipo="number"
-            placeholder="Em Kg"
             handleOnChange={capturarEditAnimal}
-            value={editAnimal.peso ? editAnimal.peso : ""}
+            placeholder ={editAnimal.peso ? editAnimal.peso : ""}
           />
           <Input
             texto="Tamanho"
             tipo="number"
-            placeholder="Em Metros"
             handleOnChange={capturarEditAnimal}
-            value={editAnimal.tamanho ? editAnimal.tamanho : ""}
+            placeholder ={editAnimal.tamanho ? editAnimal.tamanho : ""}
           />
           <InputCaracter
             texto="Raça"
             textoNome="raca"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            value={editAnimal.raca ? editAnimal.raca : ""}
+            placeholder ={editAnimal.raca ? editAnimal.raca : ""}
           />
           <InputCaracter
             texto="Espécie"
             textoNome="especie"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            value={editAnimal.especie ? editAnimal.especie : ""}
+            placeholder ={editAnimal.especie ? editAnimal.especie : ""}
           />
 
           <Button text="Editar Cadastro" />
