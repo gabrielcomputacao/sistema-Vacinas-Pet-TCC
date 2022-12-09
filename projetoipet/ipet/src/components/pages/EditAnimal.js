@@ -1,133 +1,145 @@
 import Input from "../form/Input";
 import InputCaracter from "../form/InputCaracter";
-import Button from "../form/Button"
+import Button from "../form/Button";
 import Selection from "../form/Select";
 import { useState } from "react";
-import {DivForm,FormStyle} from "./stylepages/EditAnimalStyle"
- 
+import { DivForm, FormStyle,DivButtonExluir } from "./stylepages/EditAnimalStyle";
+import { IoCloseSharp } from "react-icons/io5";
 
+function EditAnimal({ editAnimal, setEditVisible }) {
+  const [editarAnimal, setEditarAnimal] = useState(editAnimal || {});
 
-function EditAnimal({editAnimal,setStateEdit}) {
+  function capturarEditAnimal(e) {
+    setEditarAnimal({
+      ...editarAnimal,
+      [e.target.name]:  e.target.value,
+    });
+    console.log(editAnimal)
+  }
 
-    const [editarAnimal, setEditarAnimal] = useState( editAnimal || {} );
+  function capturaSelectEditAnimal(e) {
+    setEditarAnimal({
+      ...editarAnimal,
+      [e.target.name]: e.target.options[e.target.selectedIndex].text,
+    });
+  }
+  /* console.log(editarAnimal) */
 
-    function capturarEditAnimal(e){
-        setEditarAnimal({
-            ...editarAnimal,
-            [e.target.name] : [e.target.value]
-        })
-    }
-    
-    function capturaSelectEditAnimal(e){
-        setEditarAnimal({
-          ...editarAnimal,
-          [e.target.name] : e.target.options[e.target.selectedIndex].text,
-        })
-      }
-      /* console.log(editarAnimal) */
+  function handleSubmitEdit(e) {
+    e.preventDefault();
 
-      function handleSubmitEdit(e){
-            e.preventDefault()
+    fetch("http://localhost:3005/editanimal", {
+      headers: {
+        "Content-Type": "application/json",
+        
+      },
+      method: "PATCH",
+      body: JSON.stringify(editarAnimal),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
 
-            fetch( 'http://localhost:3005/editanimal' , {
-                headers:{
-                    'Content-Type': 'application/json'
-                },
-                method: 'UPDATE',
-                body: JSON.stringify(editarAnimal),
-            })
-            .then( resp => resp.json())
-            .then( data =>{
-              console.log(data)
+        setTimeout(() => {
+          setEditVisible(false);
+        }, 1000);
+      });
+  }
 
-              setTimeout(()=>{
-                setStateEdit(false)
-              }, 1000)
-              
-            })
-      }
-      
   return (
     <div>
       <DivForm>
+        <DivButtonExluir>
+          <button
+            onClick={() => {
+              setEditVisible(false);
+              
+            }}
+          >
+            <IoCloseSharp />
+          </button>
+        </DivButtonExluir>
+
         <FormStyle onSubmit={handleSubmitEdit}>
           <Input
             texto="Nome"
             tipo="text"
-            placeholder = {editAnimal.nome ? editAnimal.nome : ""}
+            placeholder={editAnimal.nome ? editAnimal.nome : ""}
             handleOnChange={capturarEditAnimal}
           />
           <Selection
             text="Proprietário"
             name="proprietario"
             handleOnChange={capturaSelectEditAnimal}
-            placeholder ={editAnimal.proprietario ? editAnimal.proprietario : ""}
+            value={editAnimal.proprietario ? editAnimal.proprietario : ""}
           />
           <InputCaracter
             texto="Data Nascimento"
             textoNome="nascimento"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            placeholder ={editAnimal.data_nascimento ? editAnimal.data_nascimento : ""}
+            placeholder={
+              editAnimal.data_nascimento ? editAnimal.data_nascimento : ""
+            }
           />
           <Input
             texto="Sexo"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            placeholder ={editAnimal.sexo ? editAnimal.sexo : ""}
+            placeholder={editAnimal.sexo ? editAnimal.sexo : ""}
           />
           <Input
             texto="Pelagem"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            placeholder ={editAnimal.pelagem ? editAnimal.pelagem : ""}
+            placeholder={editAnimal.pelagem ? editAnimal.pelagem : ""}
           />
           <InputCaracter
             texto="Doença"
             textoNome="doenca"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            placeholder ={editAnimal.doenca ? editAnimal.doenca : ""}
+            placeholder={editAnimal.doenca ? editAnimal.doenca : ""}
           />
           <InputCaracter
             texto="Alergias"
             textoNome="alergia"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            placeholder ={editAnimal.alergia ? editAnimal.alergia : ""}
+            placeholder={editAnimal.alergia ? editAnimal.alergia : ""}
           />
           <InputCaracter
             texto="Observações"
             textoNome="obs"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            placeholder ={editAnimal.obs ? editAnimal.obs : ""}
+            placeholder={editAnimal.obs ? editAnimal.obs : ""}
           />
           <Input
             texto="Peso"
             tipo="number"
             handleOnChange={capturarEditAnimal}
-            placeholder ={editAnimal.peso ? editAnimal.peso : ""}
+            placeholder={editAnimal.peso ? editAnimal.peso : ""}
           />
           <Input
             texto="Tamanho"
             tipo="number"
             handleOnChange={capturarEditAnimal}
-            placeholder ={editAnimal.tamanho ? editAnimal.tamanho : ""}
+            placeholder={editAnimal.tamanho ? editAnimal.tamanho : ""}
           />
           <InputCaracter
             texto="Raça"
             textoNome="raca"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            placeholder ={editAnimal.raca ? editAnimal.raca : ""}
+            placeholder={editAnimal.raca ? editAnimal.raca : ""}
           />
           <InputCaracter
             texto="Espécie"
             textoNome="especie"
             tipo="text"
             handleOnChange={capturarEditAnimal}
-            placeholder ={editAnimal.especie ? editAnimal.especie : ""}
+            placeholder={editAnimal.especie ? editAnimal.especie : ""}
           />
 
           <Button text="Editar Cadastro" />

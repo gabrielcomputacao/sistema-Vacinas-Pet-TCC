@@ -30,8 +30,23 @@ export const FormStyle = styled.form`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+`
+export const DivButtonExluir = styled.div`
+    border: none;
+    float: right;
+    padding: 1em 1em 0 1em;
     
 
-`
+    button{
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
 
+    }
+
+    svg{
+        font-size: 28px;
+    }
+
+`
 
