@@ -1,9 +1,16 @@
-import Input from "../form/Input";
+
+import InputCaracter from "../form/InputCaracter";
 import Button from "../form/Button";
-import { useState } from "react";
-import { FormFlex, DivForm, SectionMain } from "./stylepages/CadastrarVacinasStyle";
+import { useEffect, useState } from "react";
+import {
+  FormFlex,
+  DivForm,
+  SectionMain,
+} from "./stylepages/CadastrarVacinasStyle";
 
 function CadastrarVacinas() {
+  const [DadosVacina, setDadosVacina] = useState({});
+
   function enviarVacina(e) {
     e.preventDefault();
     console.log(DadosVacina);
@@ -16,7 +23,27 @@ function CadastrarVacinas() {
     });
   }
 
-  const [DadosVacina, setDadosVacina] = useState({});
+  function getDate() {
+    let montandoData = "";
+    const date = new Date();
+
+    montandoData += date.getDate() + "/";
+
+    const mounth = date.getMonth() + 1;
+
+    montandoData += mounth + "/";
+
+    const year = date.getFullYear();
+
+    montandoData += year;
+
+    return montandoData;
+  }
+
+
+  useEffect(()=>{
+      
+  }, [])
 
   return (
     <SectionMain>
@@ -24,12 +51,20 @@ function CadastrarVacinas() {
       <div>
         <FormFlex onSubmit={enviarVacina}>
           <DivForm>
-            <Input
+            <InputCaracter
+              textoNome="nomeVacina"
+              texto="Nome da Vacina"
+              tipo="text"
+              handleOnChange={handleDadosVacina}
+            />
+            <InputCaracter
+              textoNome="nomeAnimal"
               texto="Nome do seu Animal"
               tipo="text"
               handleOnChange={handleDadosVacina}
             />
-            <Input
+            <InputCaracter
+              textoNome="fabricacao"
               texto="Data de Fabricação"
               tipo="text"
               placeholder="01/01/2019"
@@ -38,37 +73,44 @@ function CadastrarVacinas() {
           </DivForm>
 
           <DivForm>
-            <Input
+            <InputCaracter
+              textoNome="veterinario"
               texto="Veterinário"
               tipo="text"
               handleOnChange={handleDadosVacina}
             />
 
-            <Input
+            <InputCaracter
+              textoNome="vencimento"
               texto="Vencimento da Vacina"
               tipo="text"
               placeholder="01/01/2024"
               handleOnChange={handleDadosVacina}
             />
-          </DivForm>
-          <DivForm>
-            <Input
-              texto="Data de Hoje"
+            <InputCaracter
+              texto="Data da Aplicação da Vacina"
+              textoNome="datavacinacao"
               tipo="text"
               placeholder="01/01/2001"
               handleOnChange={handleDadosVacina}
+              defaultValue={getDate()}
             />
-            <Input
+          </DivForm>
+          <DivForm>
+            <InputCaracter
+              textoNome="revacinacao"
               texto="Revacinação"
               tipo="text"
               handleOnChange={handleDadosVacina}
             />
+            <InputCaracter
+              textoNome="obs"
+              texto="Observação"
+              tipo="text"
+              handleOnChange={handleDadosVacina}
+            />
           </DivForm>
-          <Input
-            texto="Observação"
-            tipo="text"
-            handleOnChange={handleDadosVacina}
-          />
+
           <Button text="Enviar Cadastro" />
         </FormFlex>
       </div>
