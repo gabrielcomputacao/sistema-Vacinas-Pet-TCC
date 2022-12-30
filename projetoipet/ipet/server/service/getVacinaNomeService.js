@@ -1,6 +1,6 @@
 
 const vacinaNome = require("../data/getVacinaNome")
 
-exports.getVacinaNomeService = function (iduser){
-    return vacinaNome.getVacinaNome(iduser)
+exports.getVacinaNomeService = async function (){
+    return await vacinaNome.getVacinaNome()
 }

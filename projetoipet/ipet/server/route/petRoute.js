@@ -101,10 +101,9 @@ router.patch("/editanimal" , async function(req, res){
     res.json(value)
 })
 
-router.get("/vacinacao/:id", async function(req,res){
-    const iduser = req.params.id;
-
-    const result = getVacinaNome.getVacinaNomeService(iduser)
+router.get("/vacinacao", async function(req,res){
+   
+    const result = await getVacinaNome.getVacinaNomeService();
 
     res.json(result)
 

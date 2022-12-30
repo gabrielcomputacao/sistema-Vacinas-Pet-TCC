@@ -1,4 +1,3 @@
-
 import InputCaracter from "../form/InputCaracter";
 import Button from "../form/Button";
 import { useEffect, useState } from "react";
@@ -40,10 +39,19 @@ function CadastrarVacinas() {
     return montandoData;
   }
 
-
-  useEffect(()=>{
-      
-  }, [])
+  useEffect(() => {
+    fetch("http://localhost:3005/vacinacao", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.rows);
+      })
+      .catch((ex) => console.log(ex));
+  }, []);
 
   return (
     <SectionMain>
