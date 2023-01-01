@@ -4,12 +4,22 @@ import imagemFamily from "../../img/family_animals.webp"
 import ButtonLink from "../form/ButtonLink";
 import { useEffect } from "react";
 
+import {useSelector} from "react-redux"
+import {selectUser} from "../../redux/slice"
+
 
 function Sobre() {
 
+  const state = useSelector(selectUser)
+
   useEffect(()=>{
 
+    /* fetch(`http://localhost:3005/getnomeanimais/${state.iduser}`) */
+    console.log(state.iduser)
   }, [])
+
+
+
   return (
     <section>
       <DivFlex>
