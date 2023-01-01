@@ -8,7 +8,7 @@ exports.getNomeAnimal = async function (iduser){
         const dataB = await database();
         const sql = "SELECT nome FROM animal WHERE cod_usuario = $1";
         let values = [iduser] ;
-        const nomesAnimais = await dataB.query();
+        const nomesAnimais = await dataB.query(sql,values);
 
         return nomesAnimais;
         

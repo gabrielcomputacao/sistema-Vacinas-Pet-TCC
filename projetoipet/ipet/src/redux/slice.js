@@ -12,6 +12,7 @@ export const slice = createSlice({
             numero: 0,
             cep:'',
         },
+        animais:[],
     },
     reducers:{
         checkinUser(state, {payload}){
@@ -30,12 +31,18 @@ export const slice = createSlice({
                     numero: payload.numero,
                 }
             }
+        },
+        checkHaveAnimais(state , {payload}){
+            return {
+                ...state,
+                animais: payload
+            }
         }
     }
     
 })
 
-export const  {checkinUser,checkinEndereco} = slice.actions
+export const  {checkinUser,checkinEndereco,checkHaveAnimais} = slice.actions
 
 export default slice.reducer
 

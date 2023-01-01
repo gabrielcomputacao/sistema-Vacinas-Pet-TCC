@@ -1,27 +1,47 @@
 
-import {DivFlex,DivContent} from "./stylepages/SobreStyle"
+import {DivFlex,DivContent,DivHaveAnimal,DivNotHaveAnimal} from "./stylepages/SobreStyle"
 import imagemFamily from "../../img/family_animals.webp"
 import ButtonLink from "../form/ButtonLink";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import {useSelector} from "react-redux"
 import {selectUser} from "../../redux/slice"
 
+import {useDispatch} from "react-redux"
+import {checkHaveAnimais} from "../../redux/slice"
+
 
 function Sobre() {
 
+  const [possuiAnimal, setPossuiAnimal] = useState([]);
+  const dispatch = useDispatch()
   const state = useSelector(selectUser)
 
   useEffect(()=>{
 
-    /* fetch(`http://localhost:3005/getnomeanimais/${state.iduser}`) */
-    console.log(state.iduser)
+    fetch(`http://localhost:3005/nomeanimais/${state.iduser}` , {
+      headers:{
+        "Content-Type" : "application/json",
+      },
+      method: "GET"
+    }).then( (resp) => resp.json())
+    .then( dados =>{
+      setPossuiAnimal(dados.rows)
+      dispatch(checkHaveAnimais(dados.rows))
+    })
+    .catch((ex) => console.log(ex))
+
+
+    
   }, [])
 
 
 
   return (
     <section>
+      { 
+        possuiAnimal.length != null && possuiAnimal.length > 0 ?  ( <DivHaveAnimal>Bem vindo!</DivHaveAnimal>) : (<DivNotHaveAnimal> Você ainda não possui Pet's Cadastrados.</DivNotHaveAnimal> )
+      }
       <DivFlex>
         <DivContent>
           <h1> Ipet - Sistema de Marcação de Vacina</h1>

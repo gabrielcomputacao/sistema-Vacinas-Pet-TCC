@@ -24,5 +24,18 @@ export const DivContent = styled.div`
 
     
 `
+export const DivHaveAnimal = styled.div`
+    padding: .5em;
+    background-color: #ddfada;
+    border-radius: 5px;
+`
+
+export const DivNotHaveAnimal = styled(DivHaveAnimal)`
+    background-color: #d69796;
+    font-weight: bold;
+
+`
+
+
 
 
