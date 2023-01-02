@@ -23,7 +23,7 @@ export const InputSty = styled.input`
     border: 1px solid green;
     border-radius: 5px;
     transition: 1s all;
-    
+    outline: none;
     
 `
 

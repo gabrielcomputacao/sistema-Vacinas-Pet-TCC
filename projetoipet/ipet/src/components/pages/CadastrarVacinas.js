@@ -1,14 +1,28 @@
 import InputCaracter from "../form/InputCaracter";
 import Button from "../form/Button";
+import SelectNomesAnimais from "../form/SelectNomesAnimais"
 import { useEffect, useState } from "react";
+import {useSelector} from "react-redux";
 import {
   FormFlex,
   DivForm,
   SectionMain,
 } from "./stylepages/CadastrarVacinasStyle";
+import { compose } from "redux";
 
 function CadastrarVacinas() {
+/* redux */
+  const stateAtual = useSelector((state) => state.usercheck)
+  const nomeAnimais = stateAtual.animais;
+  /* state */
   const [DadosVacina, setDadosVacina] = useState({});
+  const [Vacina, setVacina] = useState([]);
+  const [objVacina, setObjVacina] = useState({
+    fabricacao : "",
+    vencimento : "",
+    revacinacao : "",
+    obs : "",
+  })
 
   function enviarVacina(e) {
     e.preventDefault();
@@ -20,6 +34,57 @@ function CadastrarVacinas() {
       ...DadosVacina,
       [e.target.name]: [e.target.value],
     });
+  }
+
+  function handleSelectNomeAnimais(e){
+    setDadosVacina({
+      ...DadosVacina,
+      [e.target.name] : e.target.options[e.target.selectedIndex].text
+    })
+
+    capturarVacina(e.target.options[e.target.selectedIndex].text)
+
+  }
+
+  function capturarVacina(textoVacina){
+
+    switch (textoVacina) {
+      case "faizer":{
+        setObjVacina({
+          ...objVacina,
+          fabricacao : Vacina[0].fabricacao,
+          vencimento : Vacina[0].vencimento,
+          revacinacao : Vacina[0].revacinacao,
+           obs : Vacina[0].obs,
+        })
+
+        
+        break;
+      }
+      case "jonson":{
+        setObjVacina({
+          ...objVacina,
+          fabricacao : Vacina[1].fabricacao,
+          vencimento : Vacina[1].vencimento,
+          revacinacao : Vacina[1].revacinacao,
+           obs : Vacina[1].obs,
+        })
+        break;
+      }
+      case "butatan":{
+        setObjVacina({
+          ...objVacina,
+          fabricacao : Vacina[2].fabricacao,
+          vencimento : Vacina[2].vencimento,
+          revacinacao : Vacina[2].revacinacao,
+           obs : Vacina[2].obs,
+        })
+        break;
+      }
+      default:
+        break;
+    }
+
   }
 
   function getDate() {
@@ -48,35 +113,41 @@ function CadastrarVacinas() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.rows);
+        
+        setVacina(data.rows)
       })
       .catch((ex) => console.log(ex));
   }, []);
 
+  
   return (
     <SectionMain>
       <h1>Cadastre a vacina do seu Animal</h1>
       <div>
         <FormFlex onSubmit={enviarVacina}>
           <DivForm>
-            <InputCaracter
-              textoNome="nomeVacina"
-              texto="Nome da Vacina"
-              tipo="text"
-              handleOnChange={handleDadosVacina}
-            />
-            <InputCaracter
-              textoNome="nomeAnimal"
-              texto="Nome do seu Animal"
-              tipo="text"
-              handleOnChange={handleDadosVacina}
-            />
+           
+           <SelectNomesAnimais 
+            name="nomeVacina"
+            text="Escolha a Vacina"
+            handleOnChange={handleSelectNomeAnimais}
+            options={Vacina}
+
+           />
+           <SelectNomesAnimais 
+            name="nomeAnimais"
+            text="Escolha o nome do seu Animal"
+            handleOnChange={handleSelectNomeAnimais}
+            options={nomeAnimais}
+
+           />
             <InputCaracter
               textoNome="fabricacao"
               texto="Data de Fabricação"
               tipo="text"
               placeholder="01/01/2019"
               handleOnChange={handleDadosVacina}
+              value={objVacina.fabricacao || ""}
             />
           </DivForm>
 
@@ -94,6 +165,7 @@ function CadastrarVacinas() {
               tipo="text"
               placeholder="01/01/2024"
               handleOnChange={handleDadosVacina}
+              value={objVacina.vencimento || ""}
             />
             <InputCaracter
               texto="Data da Aplicação da Vacina"
@@ -110,12 +182,14 @@ function CadastrarVacinas() {
               texto="Revacinação"
               tipo="text"
               handleOnChange={handleDadosVacina}
+              value={objVacina.revacinacao || ""}
             />
             <InputCaracter
               textoNome="obs"
               texto="Observação"
               tipo="text"
               handleOnChange={handleDadosVacina}
+              value={objVacina.obs || ""}
             />
           </DivForm>
 
