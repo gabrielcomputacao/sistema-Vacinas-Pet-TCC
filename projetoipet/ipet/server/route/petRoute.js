@@ -19,6 +19,7 @@ const deletAnimal = require("../service/deletAnimalService")
 const editAnimal = require("../service/insertEditarAnimalService")
 const getVacinaNome = require("../service/getVacinaNomeService")
 const getNomesAnimais = require("../service/getNomesAnimaisService")
+const insertVacina = require("../service/insertVacinaService")
 
 router.get("/cadastrousuario", async function (req, res) {
     const usuarios = await petService.getCadastroPessoa()
@@ -114,6 +115,15 @@ router.patch("/editanimal" , async function(req, res){
 router.get("/vacinacao", async function(req,res){
    
     const result = await getVacinaNome.getVacinaNomeService();
+
+    res.json(result)
+
+})
+
+router.post("/cadastrarvacina" , async function(req,res){
+    const dadosVacina = req.body;
+
+    const result = await insertVacina.vacinaService(dadosVacina) ;
 
     res.json(result)
 

@@ -8,7 +8,7 @@ import {
   DivForm,
   SectionMain,
 } from "./stylepages/CadastrarVacinasStyle";
-import { compose } from "redux";
+
 
 function CadastrarVacinas() {
 /* redux */
@@ -26,13 +26,27 @@ function CadastrarVacinas() {
 
   function enviarVacina(e) {
     e.preventDefault();
-    console.log(DadosVacina);
+
+    console.log(DadosVacina)
+    
+    fetch('http://localhost:3005/cadastrarvacina', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(DadosVacina)
+    })
+    .then(resp => resp.json())
+    .then(data =>{
+      console.log(data)
+    })
+    .catch(ex => console.log(ex))
   }
 
   function handleDadosVacina(e) {
     setDadosVacina({
       ...DadosVacina,
-      [e.target.name]: [e.target.value],
+      [e.target.name]: e.target.value,
     });
   }
 
@@ -57,7 +71,13 @@ function CadastrarVacinas() {
           revacinacao : Vacina[0].revacinacao,
            obs : Vacina[0].obs,
         })
-
+        setDadosVacina({
+          ...DadosVacina,
+          ['fabricacao'] : Vacina[0].fabricacao,
+          ['vencimento'] : Vacina[0].vencimento,
+          ['revacinacao'] : Vacina[0].revacinacao,
+           ['obs'] : Vacina[0].obs
+        })
         
         break;
       }
@@ -69,6 +89,15 @@ function CadastrarVacinas() {
           revacinacao : Vacina[1].revacinacao,
            obs : Vacina[1].obs,
         })
+        setDadosVacina({
+          ...DadosVacina,
+          ['fabricacao'] : Vacina[1].fabricacao,
+          ['vencimento'] : Vacina[1].vencimento,
+          ['revacinacao'] : Vacina[1].revacinacao,
+           ['obs'] : Vacina[1].obs
+        })
+
+
         break;
       }
       case "butatan":{
@@ -79,6 +108,15 @@ function CadastrarVacinas() {
           revacinacao : Vacina[2].revacinacao,
            obs : Vacina[2].obs,
         })
+        setDadosVacina({
+          ...DadosVacina,
+          ['fabricacao'] : Vacina[2].fabricacao,
+          ['vencimento'] : Vacina[2].vencimento,
+          ['revacinacao'] : Vacina[2].revacinacao,
+           ['obs'] : Vacina[2].obs
+        })
+
+
         break;
       }
       default:
@@ -147,7 +185,7 @@ function CadastrarVacinas() {
               tipo="text"
               placeholder="01/01/2019"
               handleOnChange={handleDadosVacina}
-              value={objVacina.fabricacao || ""}
+              value={objVacina.fabricacao}
             />
           </DivForm>
 
@@ -165,7 +203,7 @@ function CadastrarVacinas() {
               tipo="text"
               placeholder="01/01/2024"
               handleOnChange={handleDadosVacina}
-              value={objVacina.vencimento || ""}
+              value={objVacina.vencimento}
             />
             <InputCaracter
               texto="Data da Aplicação da Vacina"
@@ -182,14 +220,14 @@ function CadastrarVacinas() {
               texto="Revacinação"
               tipo="text"
               handleOnChange={handleDadosVacina}
-              value={objVacina.revacinacao || ""}
+              value={objVacina.revacinacao}
             />
             <InputCaracter
               textoNome="obs"
               texto="Observação"
               tipo="text"
               handleOnChange={handleDadosVacina}
-              value={objVacina.obs || ""}
+              value={objVacina.obs}
             />
           </DivForm>
 
