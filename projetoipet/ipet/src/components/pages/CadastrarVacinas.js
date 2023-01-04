@@ -1,7 +1,7 @@
 import InputCaracter from "../form/InputCaracter";
 import Button from "../form/Button";
 import SelectNomesAnimais from "../form/SelectNomesAnimais"
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {useSelector} from "react-redux";
 import {
   FormFlex,
@@ -17,6 +17,7 @@ function CadastrarVacinas() {
   /* state */
   const [DadosVacina, setDadosVacina] = useState({});
   const [Vacina, setVacina] = useState([]);
+  const [TextoVacina, setTextoVacina] = useState("")
   const [objVacina, setObjVacina] = useState({
     fabricacao : "",
     vencimento : "",
@@ -55,10 +56,15 @@ function CadastrarVacinas() {
       ...DadosVacina,
       [e.target.name] : e.target.options[e.target.selectedIndex].text
     })
-
-    capturarVacina(e.target.options[e.target.selectedIndex].text)
-
+     
+    setTextoVacina(e.target.options[e.target.selectedIndex].text)
+    
   }
+
+  useMemo( 
+    () =>{
+      capturarVacina(TextoVacina)
+    },[TextoVacina])
 
   function capturarVacina(textoVacina){
 
@@ -73,11 +79,13 @@ function CadastrarVacinas() {
         })
         setDadosVacina({
           ...DadosVacina,
-          ['fabricacao'] : Vacina[0].fabricacao,
-          ['vencimento'] : Vacina[0].vencimento,
-          ['revacinacao'] : Vacina[0].revacinacao,
-           ['obs'] : Vacina[0].obs
+          'fabricacao' : Vacina[0].fabricacao,
+          'vencimento' : Vacina[0].vencimento,
+          'revacinacao' : Vacina[0].revacinacao,
+           'obs' : Vacina[0].obs
         })
+
+        console.log(DadosVacina)
         
         break;
       }
@@ -91,10 +99,10 @@ function CadastrarVacinas() {
         })
         setDadosVacina({
           ...DadosVacina,
-          ['fabricacao'] : Vacina[1].fabricacao,
-          ['vencimento'] : Vacina[1].vencimento,
-          ['revacinacao'] : Vacina[1].revacinacao,
-           ['obs'] : Vacina[1].obs
+          'fabricacao' : Vacina[1].fabricacao,
+          'vencimento' : Vacina[1].vencimento,
+          'revacinacao' : Vacina[1].revacinacao,
+           'obs' : Vacina[1].obs
         })
 
 
@@ -110,10 +118,10 @@ function CadastrarVacinas() {
         })
         setDadosVacina({
           ...DadosVacina,
-          ['fabricacao'] : Vacina[2].fabricacao,
-          ['vencimento'] : Vacina[2].vencimento,
-          ['revacinacao'] : Vacina[2].revacinacao,
-           ['obs'] : Vacina[2].obs
+        'fabricacao' : Vacina[2].fabricacao,
+        'vencimento' : Vacina[2].vencimento,
+        'revacinacao' : Vacina[2].revacinacao,
+        'obs' : Vacina[2].obs
         })
 
 
@@ -209,7 +217,6 @@ function CadastrarVacinas() {
               texto="Data da Aplicação da Vacina"
               textoNome="datavacinacao"
               tipo="text"
-              placeholder="01/01/2001"
               handleOnChange={handleDadosVacina}
               defaultValue={getDate()}
             />
