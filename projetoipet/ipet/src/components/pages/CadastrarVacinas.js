@@ -15,7 +15,9 @@ function CadastrarVacinas() {
   const stateAtual = useSelector((state) => state.usercheck)
   const nomeAnimais = stateAtual.animais;
   /* state */
-  const [DadosVacina, setDadosVacina] = useState({});
+  const [DadosVacina, setDadosVacina] = useState({
+    datavacinacao : getDate(),
+  });
   const [Vacina, setVacina] = useState([]);
   const [TextoVacina, setTextoVacina] = useState("")
   const [objVacina, setObjVacina] = useState({
@@ -27,7 +29,6 @@ function CadastrarVacinas() {
 
   function enviarVacina(e) {
     e.preventDefault();
-
     console.log(DadosVacina)
     
     fetch('http://localhost:3005/cadastrarvacina', {
