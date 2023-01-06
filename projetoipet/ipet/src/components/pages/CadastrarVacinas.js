@@ -29,7 +29,6 @@ function CadastrarVacinas() {
 
   function enviarVacina(e) {
     e.preventDefault();
-    console.log(DadosVacina)
     
     fetch('http://localhost:3005/cadastrarvacina', {
       method: "POST",
