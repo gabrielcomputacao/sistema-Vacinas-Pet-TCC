@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import {SectionListaVacna,DivListaVac} from "./stylepages/ListarVacinasStyle"
+import CardListaVacina from "../layout/CardListaVacina";
+
 
 function ListarVacinas(){
 
@@ -24,9 +26,11 @@ function ListarVacinas(){
         <SectionListaVacna>
             <h2>Listar Vacinas</h2>
             <DivListaVac>
-                <div>
-
-                </div>
+                {
+                    ListaVacina.map((element,index) =>(
+                        <CardListaVacina key={index} lista={element} />
+                    ))
+                }
             </DivListaVac>
         </SectionListaVacna>
         
