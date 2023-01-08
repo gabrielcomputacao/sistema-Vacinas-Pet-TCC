@@ -9,5 +9,6 @@ export const  DivContainer = styled.div`
     margin: 0 auto;
     background-color: #f5f6fa;
     padding: 1em;
+
 `
 

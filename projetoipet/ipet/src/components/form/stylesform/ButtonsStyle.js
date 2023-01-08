@@ -16,6 +16,7 @@ export const ButtonStyle = styled.button`
     &:hover{
         background-color: #90ee90;
     }
+
 `
 /* herda todas os itens de buttonstyle */
 export const ButtonLinkStyle = styled(ButtonStyle)`

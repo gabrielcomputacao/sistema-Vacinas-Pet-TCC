@@ -7,6 +7,14 @@ export const DivFlex = styled.div`
     align-items: center;
     flex-wrap: wrap;
     padding: 1.5em .5em 1em .5em;
+
+    img{
+
+        @media screen and (max-width:500px){
+            width: 95%;
+        }
+
+    }
 `
 
 export const DivContent = styled.div`
@@ -22,7 +30,11 @@ export const DivContent = styled.div`
         text-align: justify;
     }
 
-    
+    @media screen and (max-width:780px) {
+        width: 95%;
+        margin: 1em 0;
+    }
+
 `
 export const DivHaveAnimal = styled.div`
     padding: .5em;

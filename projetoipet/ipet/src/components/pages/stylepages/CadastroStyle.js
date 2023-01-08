@@ -43,4 +43,14 @@ export const Section = styled.section`
         align-items: center;
     }
 
+    @media screen and (max-width:650px){
+        > div{
+            width: 95%;
+        }
+        h1{
+            text-align: center;
+            margin: 1em 0 .3em 0;
+        }
+    }
+
 `

@@ -11,7 +11,15 @@ export const DivImgContent = styled.div`
     img{
         width: 40%;
         border-radius: 10px;
+
+
+        @media screen and (max-width:990px){
+            display: none;
+        }
     }
+
+
+
 `
 
 export const DivCampos = styled.div`

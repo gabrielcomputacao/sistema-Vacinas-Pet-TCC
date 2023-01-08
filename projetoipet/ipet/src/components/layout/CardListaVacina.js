@@ -1,20 +1,21 @@
 
+import {CardDivLista,HeaderCardLista,BodyCardLista} from "./stylesLayout/CardListaSryle"
 
  function CardListaVacina(props){
 
     return(
-        <div>
-            <div>
-                <h3>{props.lista.nomevacina}</h3>
-                <h4>{props.lista.nomeanimal}</h4>
-            </div>
-            <div>
-                <p>{props.lista.fabricacao}</p>
-                <p>Vencimento : {props.lista.vencimento}</p>
+        <CardDivLista>
+            <HeaderCardLista>
+                <h3>Vacina: {props.lista.nomevacina}</h3>
+                <h4>Pet: {props.lista.nomeanimal}</h4>
+            </HeaderCardLista>
+            <BodyCardLista>
                 <p>Data da Vacinação : {props.lista.datavacinacao}</p>
+                <p>Fabricação : {props.lista.fabricacao}</p>
+                <p>Vencimento : {props.lista.vencimento}</p>
                 <p>Revanição : {props.lista.revacinacao}</p>
-            </div>
-        </div>
+            </BodyCardLista>
+        </CardDivLista>
     )
 
  }

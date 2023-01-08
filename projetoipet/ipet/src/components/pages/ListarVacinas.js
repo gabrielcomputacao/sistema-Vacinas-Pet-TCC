@@ -24,7 +24,7 @@ function ListarVacinas(){
 
     return(
         <SectionListaVacna>
-            <h2>Listar Vacinas</h2>
+            <h2>Sua Lista de Vacinas</h2>
             <DivListaVac>
                 {
                     ListaVacina.map((element,index) =>(

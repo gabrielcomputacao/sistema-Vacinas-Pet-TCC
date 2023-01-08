@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 
-export const DivNavbar = styled.div`
+export const DivNavbar = styled.div `
     height: 80px;
     width: 100%;
     background-color: green;
@@ -13,13 +13,13 @@ export const DivNavbar = styled.div`
     padding: 0 2.5em;
 `
 
-export const Imagem = styled.img`
+export const Imagem = styled.img `
     width: 100px;
     height: 60px;
     padding: .5em;
 `
 
-export const Navegacao = styled.nav`
+export const Navegacao = styled.nav `
 
     ul{
         display: flex;
@@ -40,4 +40,59 @@ export const Navegacao = styled.nav`
             color: black;
         }
     }
+
+    @media screen and (max-width:860px){
+        display: none;
+    }
+
+`
+
+export const ButtonHamburguer = styled.div `
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    label{
+        height: 22px;
+        width: 30px;
+        cursor: pointer;
+        position: relative;
+        display: block;
+    }
+    
+
+    span{
+        position: absolute;
+        display: block;
+        height: 5px;
+        width: 100%;
+        border-radius: 30px;
+        background-color: #fff;
+    }
+
+    label span:nth-child(1){
+        top: 0;
+    }
+    label span:nth-child(2){
+        top: 8px;
+    }
+    label span:nth-child(3){
+        top: 16px;
+    }
+
+
+    @media screen and (max-width:860px){
+        display: block;
+    }
+
+`
+
+export const MobileButtons = styled.div`
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+
 `

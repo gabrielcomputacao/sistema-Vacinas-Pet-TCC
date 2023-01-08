@@ -8,6 +8,14 @@ export const DivFooter = styled.div`
     align-items: center;
     flex-direction: row;
     background-color: yellowgreen;
+
+    @media screen and (max-width:780px){
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+
 `
 
 export const Imagem = styled.img`
@@ -25,8 +33,13 @@ export const DivTexto = styled.div`
     p{
        font-size: 14px;  
        line-height: 18px;
-       
     }
+
+    @media screen and (max-width:780px){
+        width: 92%;
+        margin: 2em 0;
+    }
+
 `
 
 export const DivContatos = styled.div`

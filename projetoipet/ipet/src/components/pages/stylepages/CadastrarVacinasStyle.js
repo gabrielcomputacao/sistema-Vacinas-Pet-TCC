@@ -28,6 +28,21 @@ export const FormFlex = styled.form`
 export const DivForm = styled.div`
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+
+    @media screen and (max-width:950px) {
+        justify-content: center;
+        align-items: center;
+        
+        
+    }
+    @media screen and (max-width:630px) {
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        
+    }
+
 
 `
 

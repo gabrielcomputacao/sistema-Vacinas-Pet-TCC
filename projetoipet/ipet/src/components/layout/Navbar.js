@@ -1,7 +1,13 @@
 import logo from "../../img/ipet.png";
 import { Link } from "react-router-dom";
 
-import {DivNavbar,Imagem,Navegacao} from "./stylesLayout/NavbarStyle"
+import {
+  DivNavbar,
+  Imagem,
+  Navegacao,
+  ButtonHamburguer,
+  MobileButtons
+} from "./stylesLayout/NavbarStyle";
 import IconUser from "./IconUser";
 
 function Navbar() {
@@ -16,11 +22,27 @@ function Navbar() {
           <li>
             <Link to="/listar">Meus Pet's</Link>
           </li>
-          <li> <Link to="/cadastrar-vacina">Cadastrar Vacina</Link> </li>
-          <li> <Link to="/listar-vacina">Listar Vacinas</Link> </li>
+          <li>
+            {" "}
+            <Link to="/cadastrar-vacina">Cadastrar Vacina</Link>{" "}
+          </li>
+          <li>
+            {" "}
+            <Link to="/listar-vacina">Listar Vacinas</Link>{" "}
+          </li>
         </ul>
       </Navegacao>
-      <IconUser/>
+      <MobileButtons>
+        <IconUser />
+        <ButtonHamburguer>
+          <label htmlFor="">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </ButtonHamburguer>
+        
+      </MobileButtons>
     </DivNavbar>
   );
 }
