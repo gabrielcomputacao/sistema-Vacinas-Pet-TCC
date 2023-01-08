@@ -80,9 +80,9 @@ router.post('/cadastroanimais' , async function(req, res){
     res.json(cadastroAnimal);
 })
 
-router.get('/getanimais' , async function(req,res,next){
-
-        const animais = await getAnimal.getAnimalService();
+router.get('/getanimais/:id' , async function(req,res,next){
+        const iduser = req.params.id
+        const animais = await getAnimal.getAnimalService(iduser);
 
         res.json(animais)
 })
@@ -130,9 +130,11 @@ router.post("/cadastrarvacina" , async function(req,res){
 
 })
 
-router.get("/listavacina" , async function(req, res){
+router.get("/listavacina/:id" , async function(req, res){
 
-    const result = await listaVacina.getListaVacinaService();
+    const iduser = req.params.id
+
+    const result = await listaVacina.getListaVacinaService(iduser);
 
     res.json(result);
 

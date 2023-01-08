@@ -13,10 +13,12 @@ import {
 function CadastrarVacinas() {
 /* redux */
   const stateAtual = useSelector((state) => state.usercheck)
+  const iduser = stateAtual.iduser;
   const nomeAnimais = stateAtual.animais;
   /* state */
   const [DadosVacina, setDadosVacina] = useState({
     datavacinacao : getDate(),
+    iduser: iduser,
   });
   const [Vacina, setVacina] = useState([]);
   const [TextoVacina, setTextoVacina] = useState("")

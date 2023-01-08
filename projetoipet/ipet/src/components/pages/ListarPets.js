@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import ButtonLink from "../form/ButtonLink";
 import Card from "../layout/Card";
 import {DivAnimais} from "./stylepages/ListarPetsStyle"
+import {useSelector} from "react-redux";
 
 function ListarPets() {
   const [numeroPet, setnumeroPet] = useState(0);
   const [animais, setAnimais] = useState({});
+  const stateAtual = useSelector((state) => state.usercheck)
+  const iduser = stateAtual.iduser
 
   useEffect(() => {
-    fetch("http://localhost:3005/getanimais",{
+    fetch(`http://localhost:3005/getanimais/${iduser}`,{
       method:'GET',
       headers:{
         "Content-Type": "application/json"

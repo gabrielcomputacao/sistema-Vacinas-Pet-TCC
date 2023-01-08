@@ -1,6 +1,6 @@
 
 const getAnimal = require("../data/getAnimais")
 
-exports.getAnimalService = function(){
-    return getAnimal.getAnimais()
+exports.getAnimalService = function(iduser){
+    return getAnimal.getAnimais(iduser)
 }

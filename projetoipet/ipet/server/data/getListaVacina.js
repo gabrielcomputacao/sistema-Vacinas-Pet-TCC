@@ -2,14 +2,15 @@
 const database = require("../infra/database/poolDatabase")
 
 
-exports.getListaVacina = async function (){
+exports.getListaVacina = async function (iduser){
 
     try {
         
         const dataB = await database();
-        const sql = "SELECT *FROM aplicacao";
+        const sql = "SELECT *FROM aplicacao WHERE iduser = $1";
+        const values = [iduser]
+        const listaVacina = await dataB.query(sql,values);
 
-        const listaVacina = await dataB.query(sql);
 
         return listaVacina;
 
