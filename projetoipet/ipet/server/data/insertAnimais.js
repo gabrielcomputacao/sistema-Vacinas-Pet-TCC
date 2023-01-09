@@ -22,7 +22,7 @@ exports.insertAnimal = async function (animal) {
     ];
 
     const result = await dataB.query(sql, values);
-
+    await dataB.end();
     return result;
 
     

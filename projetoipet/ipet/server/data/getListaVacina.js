@@ -10,7 +10,7 @@ exports.getListaVacina = async function (iduser){
         const sql = "SELECT *FROM aplicacao WHERE iduser = $1";
         const values = [iduser]
         const listaVacina = await dataB.query(sql,values);
-
+        await dataB.end();
 
         return listaVacina;
 

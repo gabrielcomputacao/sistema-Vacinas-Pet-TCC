@@ -9,7 +9,7 @@ exports.getProprietario = async function(stateUser){
         const sql = "SELECT nome from proprietario WHERE id_user= $1";
         let values = [stateUser];
         const nomes = await dataB.query(sql, values);
-
+        await dataB.end();
         return nomes;
 
     } catch (error) {

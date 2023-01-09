@@ -8,7 +8,7 @@ exports.getVacinaNome = async function(){
         const sql = "SELECT *from vacina";
         
         const result = await dataB.query(sql);
-
+        await dataB.end();
         return result;
 
     } catch (error) {

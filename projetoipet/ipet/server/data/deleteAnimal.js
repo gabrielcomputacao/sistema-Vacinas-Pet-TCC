@@ -12,6 +12,8 @@ exports.deletAnimal = async function(id){
 
         const result = await dataB.query(sql,values);
 
+        await dataB.end();
+
         return result;
         
     } catch (error) {

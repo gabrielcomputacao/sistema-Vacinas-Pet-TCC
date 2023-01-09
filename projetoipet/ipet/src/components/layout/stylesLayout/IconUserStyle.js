@@ -11,6 +11,12 @@ export const DivUsuario = styled.div`
         font-weight: bold;
         margin-left: .4em;
     }
+
+
+    @media screen and (max-width:420px){
+        display: none;
+    }
+
 `
 
 

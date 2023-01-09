@@ -10,6 +10,8 @@ exports.getAnimais = async function(iduser){
         const values = [iduser]
         const animais = await dataB.query(sql,values);
 
+        dataB.end();
+
         return animais;
         
     } catch (error) {

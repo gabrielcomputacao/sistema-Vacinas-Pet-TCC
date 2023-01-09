@@ -9,7 +9,7 @@ exports.getEnderecoId = async function(idend){
         const sql = "SELECT id_endereco from endereco WHERE id_userend=$1";
         let values = [idend.idusuario]
         const dados = await dataB.query(sql,values) ;
-
+        await dataB.end();
         return dados;
 
     } catch (error) {

@@ -1,15 +1,20 @@
 const database = require("../infra/database/poolDatabase")
 
-exports.getCadastroPessoa = function(){
+exports.getCadastroPessoa = async function(){
 
     try{
-        const dataB = database();
+        const dataB = await database();
         
-        const results = dataB.query("SELECT * FROM usuario").then(res =>{
+        const results = await dataB.query("SELECT * FROM usuario").then(res =>{
             const rows = res.rows;
             return rows;
         })
+
+
+       await dataB.end();
+
         return results;
+
     }catch(ex){
         console.log("falha na conexao \n" + ex)
     }
