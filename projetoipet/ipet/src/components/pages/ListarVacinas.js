@@ -8,7 +8,7 @@ import { selectUser } from "../../redux/slice";
 
 function ListarVacinas(){
     const state = useSelector(selectUser);
-
+   
     /* use effect para objetos e arrays pega o valor de memoria e nao os valores que
         estão dentro, por isso ao usar de atributo para lista do useeffet ele sempre atualiza
         pois a memoria muda e assim ele atualiza.

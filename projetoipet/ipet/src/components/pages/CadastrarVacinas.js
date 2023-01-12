@@ -20,6 +20,9 @@ function CadastrarVacinas() {
     datavacinacao : getDate(),
     iduser: iduser,
   });
+
+  
+
   const [Vacina, setVacina] = useState([]);
   const [TextoVacina, setTextoVacina] = useState("")
   const [objVacina, setObjVacina] = useState({
@@ -42,6 +45,7 @@ function CadastrarVacinas() {
     .then(resp => resp.json())
     .then(data =>{
       console.log(data)
+      
     })
     .catch(ex => console.log(ex))
   }
