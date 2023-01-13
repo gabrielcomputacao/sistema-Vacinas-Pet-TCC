@@ -9,34 +9,51 @@ import ButtonLink from "../form/ButtonLink";
 import { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/slice";
+import { checkNumAnimais, selectUser } from "../../redux/slice";
 
 import { useDispatch } from "react-redux";
-import { checkHaveAnimais } from "../../redux/slice";
+import { checkHaveAnimais,checkCountAnimais } from "../../redux/slice";
+
 
 function Sobre() {
-  const [possuiAnimal, setPossuiAnimal] = useState([]);
-  const dispatch = useDispatch();
   const state = useSelector(selectUser);
 
+  const [possuiAnimal, setPossuiAnimal] = useState([]);
+  const [ContAnimais, setContAnimais] = useState(state.countAnimais);
+  const [NumeroAnimais, setNumeroAnimais] = useState(state.numAnimais);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    fetch(`http://localhost:3005/nomeanimais/${state.iduser}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "GET",
-    })
-      .then((resp) => resp.json())
-      .then((dados) => {
-        setPossuiAnimal(dados.rows);
-        dispatch(checkHaveAnimais(dados.rows));
+
+    console.log(NumeroAnimais , ContAnimais , "TESTE")
+
+    if (ContAnimais !== NumeroAnimais) {
+      fetch(`http://localhost:3005/nomeanimais/${state.iduser}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "GET",
       })
-      .catch((ex) => console.log(ex));
-  }, []);
+        .then((resp) => resp.json())
+        .then((dados) => {
+          console.log(dados);
+          console.log(NumeroAnimais);
+          setPossuiAnimal(dados.rows);
+
+          setNumeroAnimais(dados.rowCount)
+
+
+          dispatch(checkHaveAnimais(dados.rows));
+          dispatch(checkNumAnimais(dados.rowCount));
+          dispatch(checkCountAnimais(dados.rowCount));
+        })
+        .catch((ex) => console.log(ex));
+    }
+  }, [NumeroAnimais]);
 
   return (
     <section>
-      {possuiAnimal.length != null && possuiAnimal.length > 0 ? (
+      {NumeroAnimais != null && NumeroAnimais > 0 ? (
         <DivHaveAnimal>Bem vindo de volta!</DivHaveAnimal>
       ) : (
         <DivNotHaveAnimal>

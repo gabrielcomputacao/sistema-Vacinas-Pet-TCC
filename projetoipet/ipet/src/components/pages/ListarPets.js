@@ -6,12 +6,20 @@ import {useSelector} from "react-redux";
 
 function ListarPets() {
   const [numeroPet, setnumeroPet] = useState(0);
-  const [animais, setAnimais] = useState({});
   const stateAtual = useSelector((state) => state.usercheck)
+  const [animais, setAnimais] = useState({});
   const iduser = stateAtual.iduser
+  const animaisState = stateAtual.animais
 
   useEffect(() => {
-    fetch(`http://localhost:3005/getanimais/${iduser}`,{
+
+    console.log(Object.keys(animaisState).length,animaisState)
+
+    setnumeroPet(Object.keys(animaisState).length);
+    setAnimais(animaisState);
+
+
+   /*  fetch(`http://localhost:3005/getanimais/${iduser}`,{
       method:'GET',
       headers:{
         "Content-Type": "application/json"
@@ -23,7 +31,11 @@ function ListarPets() {
         setnumeroPet(data.rowCount);
         setAnimais(data.rows);
       })
-      .catch((ex) => console.log(ex));
+      .catch((ex) => console.log(ex)); */
+
+
+
+
   }, []);
 
   return (

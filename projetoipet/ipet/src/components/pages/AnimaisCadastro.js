@@ -40,9 +40,6 @@ function AnimaisCadastro() {
 
     function submitDadosAnimal(e){
         e.preventDefault()
-
-        
-
         console.log(animaisDados)
 
         fetch( 'http://localhost:3005/cadastroanimais' , {

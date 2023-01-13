@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import {SectionListaVacna,DivListaVac} from "./stylepages/ListarVacinasStyle"
 import CardListaVacina from "../layout/CardListaVacina";
 
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/slice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser,checkVacinas,checkNumVacinas } from "../../redux/slice";
 
 
 function ListarVacinas(){
@@ -13,10 +13,18 @@ function ListarVacinas(){
         estão dentro, por isso ao usar de atributo para lista do useeffet ele sempre atualiza
         pois a memoria muda e assim ele atualiza.
     */
-
-    const [ListaVacina,setListaVacina] = useState([])
+    const dispatch = useDispatch();
+    const [ListaVacina,setListaVacina] = useState(state.vacinas)
+    const [NumVacina , setNumVacina] = useState(state.countVacinas)
 
     useEffect(()=>{
+
+        console.log(Object.keys(ListaVacina).length)
+        console.log(NumVacina)
+
+
+        if( Object.keys(ListaVacina).length !== NumVacina ){
+
         fetch(`http://localhost:3005/listavacina/${state.iduser}`,{
             headers:{
                 'Content-Type' : 'application/json',
@@ -25,10 +33,16 @@ function ListarVacinas(){
         })
         .then( resp => resp.json())
         .then( data =>{
-            console.log(data)
+            
             setListaVacina(data.rows)
+
+            dispatch(checkVacinas(data.rows))
+            dispatch(checkNumVacinas(data.rowCount))
         })
         .catch( ex => console.log(ex))
+
+    }
+
     } , [])
 
     return(
