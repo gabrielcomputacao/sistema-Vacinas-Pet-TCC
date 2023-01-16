@@ -25,7 +25,7 @@ function Sobre() {
 
   useEffect(() => {
 
-    console.log(NumeroAnimais , ContAnimais , "TESTE")
+    /* console.log(NumeroAnimais , ContAnimais , "TESTE") */
 
     if (ContAnimais !== NumeroAnimais) {
       fetch(`http://localhost:3005/nomeanimais/${state.iduser}`, {
@@ -36,8 +36,8 @@ function Sobre() {
       })
         .then((resp) => resp.json())
         .then((dados) => {
-          console.log(dados);
-          console.log(NumeroAnimais);
+          /* console.log(dados);
+          console.log(NumeroAnimais); */
           setPossuiAnimal(dados.rows);
 
           setNumeroAnimais(dados.rowCount)

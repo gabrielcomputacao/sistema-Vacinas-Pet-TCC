@@ -26,7 +26,7 @@ function Cadastro() {
 
 
     useEffect(()=>{
-      console.log(endereco)
+      /* console.log(endereco) */
 
       fetch('http://localhost:3005/idendereco' , {
         method:'post',

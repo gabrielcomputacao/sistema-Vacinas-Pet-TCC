@@ -13,7 +13,7 @@ function ListarPets() {
 
   useEffect(() => {
 
-    console.log(Object.keys(animaisState).length,animaisState)
+    /* console.log(Object.keys(animaisState).length,animaisState) */
 
     setnumeroPet(Object.keys(animaisState).length);
     setAnimais(animaisState);

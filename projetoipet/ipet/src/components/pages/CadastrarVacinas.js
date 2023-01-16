@@ -1,53 +1,53 @@
 import InputCaracter from "../form/InputCaracter";
 import Button from "../form/Button";
-import SelectNomesAnimais from "../form/SelectNomesAnimais"
+import SelectNomesAnimais from "../form/SelectNomesAnimais";
 import { useEffect, useMemo, useState } from "react";
-import {useSelector} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { checkTiposVacina, checkCountTiposVacina } from "../../redux/slice";
 import {
   FormFlex,
   DivForm,
   SectionMain,
 } from "./stylepages/CadastrarVacinasStyle";
 
-
 function CadastrarVacinas() {
-/* redux */
-  const stateAtual = useSelector((state) => state.usercheck)
+  /* redux */
+  const stateAtual = useSelector((state) => state.usercheck);
+  const dispatch = useDispatch();
   const iduser = stateAtual.iduser;
   const nomeAnimais = stateAtual.animais;
+  const tiposVacina = stateAtual.tiposVacina;
+  const countTiposVacina = stateAtual.countTiposVacina;
   /* state */
   const [DadosVacina, setDadosVacina] = useState({
-    datavacinacao : getDate(),
+    datavacinacao: getDate(),
     iduser: iduser,
   });
 
-  
-
   const [Vacina, setVacina] = useState([]);
-  const [TextoVacina, setTextoVacina] = useState("")
+  const [TextoVacina, setTextoVacina] = useState("");
   const [objVacina, setObjVacina] = useState({
-    fabricacao : "",
-    vencimento : "",
-    revacinacao : "",
-    obs : "",
-  })
+    fabricacao: "",
+    vencimento: "",
+    revacinacao: "",
+    obs: "",
+  });
 
   function enviarVacina(e) {
     e.preventDefault();
-    
-    fetch('http://localhost:3005/cadastrarvacina', {
+
+    fetch("http://localhost:3005/cadastrarvacina", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(DadosVacina)
+      body: JSON.stringify(DadosVacina),
     })
-    .then(resp => resp.json())
-    .then(data =>{
-      console.log(data)
-      
-    })
-    .catch(ex => console.log(ex))
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((ex) => console.log(ex));
   }
 
   function handleDadosVacina(e) {
@@ -57,86 +57,80 @@ function CadastrarVacinas() {
     });
   }
 
-  function handleSelectNomeAnimais(e){
+  function handleSelectNomeAnimais(e) {
     setDadosVacina({
       ...DadosVacina,
-      [e.target.name] : e.target.options[e.target.selectedIndex].text
-    })
-     
-    setTextoVacina(e.target.options[e.target.selectedIndex].text)
-    
+      [e.target.name]: e.target.options[e.target.selectedIndex].text,
+    });
+
+    setTextoVacina(e.target.options[e.target.selectedIndex].text);
   }
 
-  useMemo( 
-    () =>{
-      capturarVacina(TextoVacina)
-    },[TextoVacina])
+  useMemo(() => {
+    capturarVacina(TextoVacina);
+  }, [TextoVacina]);
 
-  function capturarVacina(textoVacina){
-
+  function capturarVacina(textoVacina) {
     switch (textoVacina) {
-      case "faizer":{
+      case "faizer": {
         setObjVacina({
           ...objVacina,
-          fabricacao : Vacina[0].fabricacao,
-          vencimento : Vacina[0].vencimento,
-          revacinacao : Vacina[0].revacinacao,
-           obs : Vacina[0].obs,
-        })
+          fabricacao: Vacina[0].fabricacao,
+          vencimento: Vacina[0].vencimento,
+          revacinacao: Vacina[0].revacinacao,
+          obs: Vacina[0].obs,
+        });
         setDadosVacina({
           ...DadosVacina,
-          'fabricacao' : Vacina[0].fabricacao,
-          'vencimento' : Vacina[0].vencimento,
-          'revacinacao' : Vacina[0].revacinacao,
-           'obs' : Vacina[0].obs
-        })
+          fabricacao: Vacina[0].fabricacao,
+          vencimento: Vacina[0].vencimento,
+          revacinacao: Vacina[0].revacinacao,
+          obs: Vacina[0].obs,
+        });
 
-        console.log(DadosVacina)
-        
-        break;
-      }
-      case "jonson":{
-        setObjVacina({
-          ...objVacina,
-          fabricacao : Vacina[1].fabricacao,
-          vencimento : Vacina[1].vencimento,
-          revacinacao : Vacina[1].revacinacao,
-           obs : Vacina[1].obs,
-        })
-        setDadosVacina({
-          ...DadosVacina,
-          'fabricacao' : Vacina[1].fabricacao,
-          'vencimento' : Vacina[1].vencimento,
-          'revacinacao' : Vacina[1].revacinacao,
-           'obs' : Vacina[1].obs
-        })
-
+        console.log(DadosVacina);
 
         break;
       }
-      case "butatan":{
+      case "jonson": {
         setObjVacina({
           ...objVacina,
-          fabricacao : Vacina[2].fabricacao,
-          vencimento : Vacina[2].vencimento,
-          revacinacao : Vacina[2].revacinacao,
-           obs : Vacina[2].obs,
-        })
+          fabricacao: Vacina[1].fabricacao,
+          vencimento: Vacina[1].vencimento,
+          revacinacao: Vacina[1].revacinacao,
+          obs: Vacina[1].obs,
+        });
         setDadosVacina({
           ...DadosVacina,
-        'fabricacao' : Vacina[2].fabricacao,
-        'vencimento' : Vacina[2].vencimento,
-        'revacinacao' : Vacina[2].revacinacao,
-        'obs' : Vacina[2].obs
-        })
+          fabricacao: Vacina[1].fabricacao,
+          vencimento: Vacina[1].vencimento,
+          revacinacao: Vacina[1].revacinacao,
+          obs: Vacina[1].obs,
+        });
 
+        break;
+      }
+      case "butatan": {
+        setObjVacina({
+          ...objVacina,
+          fabricacao: Vacina[2].fabricacao,
+          vencimento: Vacina[2].vencimento,
+          revacinacao: Vacina[2].revacinacao,
+          obs: Vacina[2].obs,
+        });
+        setDadosVacina({
+          ...DadosVacina,
+          fabricacao: Vacina[2].fabricacao,
+          vencimento: Vacina[2].vencimento,
+          revacinacao: Vacina[2].revacinacao,
+          obs: Vacina[2].obs,
+        });
 
         break;
       }
       default:
         break;
     }
-
   }
 
   function getDate() {
@@ -157,42 +151,48 @@ function CadastrarVacinas() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:3005/vacinacao", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        
-        setVacina(data.rows)
+   /*  console.log(Object.keys(tiposVacina).length);
+    console.log(countTiposVacina); */
+
+    setVacina(tiposVacina);
+
+    if (Object.keys(tiposVacina).length !== countTiposVacina) {
+      fetch("http://localhost:3005/vacinacao", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      .catch((ex) => console.log(ex));
+        .then((res) => res.json())
+        .then((data) => {
+          /* console.log(data); */
+
+          dispatch(checkTiposVacina(data.rows));
+          dispatch(checkCountTiposVacina(data.rowCount));
+          setVacina(data.rows);
+        })
+        .catch((ex) => console.log(ex));
+    }
   }, []);
 
-  
   return (
     <SectionMain>
       <h1>Cadastre a vacina do seu Animal</h1>
       <div>
         <FormFlex onSubmit={enviarVacina}>
           <DivForm>
-           
-           <SelectNomesAnimais 
-            name="nomeVacina"
-            text="Escolha a Vacina"
-            handleOnChange={handleSelectNomeAnimais}
-            options={Vacina}
-
-           />
-           <SelectNomesAnimais 
-            name="nomeAnimais"
-            text="Escolha o nome do seu Animal"
-            handleOnChange={handleSelectNomeAnimais}
-            options={nomeAnimais}
-
-           />
+            <SelectNomesAnimais
+              name="nomeVacina"
+              text="Escolha a Vacina"
+              handleOnChange={handleSelectNomeAnimais}
+              options={Vacina}
+            />
+            <SelectNomesAnimais
+              name="nomeAnimais"
+              text="Escolha o nome do seu Animal"
+              handleOnChange={handleSelectNomeAnimais}
+              options={nomeAnimais}
+            />
             <InputCaracter
               textoNome="fabricacao"
               texto="Data de Fabricação"

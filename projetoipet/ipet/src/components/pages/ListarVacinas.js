@@ -19,8 +19,8 @@ function ListarVacinas(){
 
     useEffect(()=>{
 
-        console.log(Object.keys(ListaVacina).length)
-        console.log(NumVacina)
+        /* console.log(Object.keys(ListaVacina).length)
+        console.log(NumVacina) */
 
 
         if( Object.keys(ListaVacina).length !== NumVacina ){
