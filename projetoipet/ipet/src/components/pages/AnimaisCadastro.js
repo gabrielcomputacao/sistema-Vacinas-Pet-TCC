@@ -7,12 +7,22 @@ import Selection from "../form/Select";
 import {useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { checkHaveAnimais,checkCountAnimais,checkNumAnimais } from "../../redux/slice";
+
 function AnimaisCadastro() {
 
     const stateUser = useSelector( state =>  state.usercheck)
     const [animaisDados,setAnimaisDados] = useState({})
+    const [arrayAnimais,setArrayAnimais] = useState([])
     const iduser = stateUser.iduser;
-    
+    /* parte de controle de requisição para lista de animais */
+    const [animais,setAnimais] = useState(stateUser.animais)
+    const [countAnimais,setCountAnimais] = useState(stateUser.countAnimais)
+    const [numAnimais,setNumAnimais] = useState(stateUser.numAnimais)
+    const dispatch = useDispatch();
+
+
     const navigate = useNavigate();
 
     useEffect(()=>{
@@ -20,7 +30,6 @@ function AnimaisCadastro() {
       setAnimaisDados({ ...animaisDados,
         [coduser] : iduser
       })
-      
     },[])
 
 
@@ -52,6 +61,21 @@ function AnimaisCadastro() {
         .then( res => res.json())
         .then(data =>{
           console.log(data)
+
+          animais.map( element =>{
+            arrayAnimais.push(element)
+          })
+
+          
+          arrayAnimais.push(animaisDados)
+
+          console.log(arrayAnimais)
+
+
+          dispatch(checkHaveAnimais(arrayAnimais));
+          dispatch(checkNumAnimais((numAnimais+1)));
+          dispatch(checkCountAnimais((countAnimais+1)));
+
 
           setTimeout( ()=>{
             navigate("/listar")

@@ -7,10 +7,13 @@ exports.insertProprietario = async function (proprietario){
         
         const sql = 'INSERT INTO proprietario(nome,cpf,telefone,obs,id_user) VALUES ($1,$2,$3,$4,$5)';
         const values = [proprietario.nome,proprietario.cpf,proprietario.telefone,proprietario.obs,proprietario.id_user];
-        const proprietario = await dataB.query(sql, values);
+        const proprietarioResult = await dataB.query(sql, values);
 
         await dataB.end();
-        return proprietario;
+
+        return proprietarioResult;
+
+        
     } catch (error) {
         console.log(error)
     }

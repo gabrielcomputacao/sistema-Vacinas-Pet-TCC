@@ -69,7 +69,7 @@ const [stateEdit,setStateEdit] = useState(false);
             <hr />
             <Pitens>
               
-              <span>Idade: {animal.data_nascimento}</span>
+              <span>Data de Nascimento: {animal.nascimento}</span>
             </Pitens>
             <hr />
             <Pitens>

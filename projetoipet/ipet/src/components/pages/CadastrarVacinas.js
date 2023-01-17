@@ -3,7 +3,7 @@ import Button from "../form/Button";
 import SelectNomesAnimais from "../form/SelectNomesAnimais";
 import { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { checkTiposVacina, checkCountTiposVacina } from "../../redux/slice";
+import { checkTiposVacina, checkCountTiposVacina,checkVacinas,checkNumVacinas } from "../../redux/slice";
 import {
   FormFlex,
   DivForm,
@@ -18,6 +18,13 @@ function CadastrarVacinas() {
   const nomeAnimais = stateAtual.animais;
   const tiposVacina = stateAtual.tiposVacina;
   const countTiposVacina = stateAtual.countTiposVacina;
+  
+  const [ArrayListaVacina,setArrayListaVacina] = useState([])
+  
+  const [ListaVacina,setListaVacina] = useState([])
+  const [NumVacina , setNumVacina] = useState(0)
+
+
   /* state */
   const [DadosVacina, setDadosVacina] = useState({
     datavacinacao: getDate(),
@@ -46,6 +53,19 @@ function CadastrarVacinas() {
       .then((resp) => resp.json())
       .then((data) => {
         console.log(data);
+
+        ListaVacina.map( element =>{
+          ArrayListaVacina.push(element)
+        })
+
+        ArrayListaVacina.push(DadosVacina)
+
+        console.log(ArrayListaVacina);
+
+        dispatch(checkVacinas(ArrayListaVacina))
+        dispatch(checkNumVacinas((NumVacina+1)))
+
+
       })
       .catch((ex) => console.log(ex));
   }
@@ -153,6 +173,9 @@ function CadastrarVacinas() {
   useEffect(() => {
    /*  console.log(Object.keys(tiposVacina).length);
     console.log(countTiposVacina); */
+
+   setListaVacina(stateAtual.vacinas)
+   setNumVacina(stateAtual.countVacinas)
 
     setVacina(tiposVacina);
 
