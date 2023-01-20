@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { checkHaveAnimais,checkCountAnimais,checkNumAnimais } from "../../redux/slice";
+import Confirmation from "../layout/Confirmation";
 
 function AnimaisCadastro() {
 
@@ -21,7 +22,9 @@ function AnimaisCadastro() {
     const [countAnimais,setCountAnimais] = useState(stateUser.countAnimais)
     const [numAnimais,setNumAnimais] = useState(stateUser.numAnimais)
     const dispatch = useDispatch();
-
+    /* confirmação de cadastro */
+    const [visible,setVisible] = useState("none")
+    const [statusCores, setStatusCores] = useState(false)
 
     const navigate = useNavigate();
 
@@ -76,18 +79,24 @@ function AnimaisCadastro() {
           dispatch(checkNumAnimais((numAnimais+1)));
           dispatch(checkCountAnimais((countAnimais+1)));
 
+          setStatusCores(true)
+          setVisible("block")
 
           setTimeout( ()=>{
             navigate("/listar")
-          },1500)
+          },2500)
         })
-        .catch( ex => console.log(ex))
+        .catch( ex => {
+          setVisible(false)
+          console.log(ex)
+        } )
         
         console.log(animaisDados)
     }
 
   return (
     <section>
+      <Confirmation visible={visible}  status={statusCores}/>
       <h1>Cadastre seu Animal no Ipet</h1>
       <div>
         <form onSubmit={submitDadosAnimal}>

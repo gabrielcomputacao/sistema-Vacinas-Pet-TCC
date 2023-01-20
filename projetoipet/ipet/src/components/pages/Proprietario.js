@@ -6,13 +6,15 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {selectUser} from "../../redux/slice"
 import {useNavigate} from 'react-router-dom'
+import Confirmation from "../layout/Confirmation";
 
 function Proprietario() {
 
   const state = useSelector(selectUser)
   const navigate = useNavigate()
   const [proprietario , setProprietario] = useState({})
-  
+  const [visible,setVisible] = useState("none")
+  const [statusCores, setStatusCores] = useState(false)
 
   useEffect(()=>{
     const userid =state.iduser
@@ -47,17 +49,23 @@ function Proprietario() {
     .then( res => res.json())
     .then(data => {
       console.log(data)
+      setStatusCores(true)
+      setVisible("block")
 
       setTimeout(()=>{
         navigate('/dashboard')
-      } , 1500)
+      } , 2500)
     })
-    .catch( ex => console.log(ex))
+    .catch( ex => {
+      setStatusCores(false)
+      console.log(ex)})
 
   }
 
   return (
     <section>
+      <Confirmation visible={visible} status={statusCores} />
+      
       <h1> Proprietário</h1>
       <DivFlexProp>
         <div>

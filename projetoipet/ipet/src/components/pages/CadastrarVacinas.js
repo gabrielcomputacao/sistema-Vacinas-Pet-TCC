@@ -9,6 +9,7 @@ import {
   DivForm,
   SectionMain,
 } from "./stylepages/CadastrarVacinasStyle";
+import Confirmation from "../layout/Confirmation";
 
 function CadastrarVacinas() {
   /* redux */
@@ -23,6 +24,11 @@ function CadastrarVacinas() {
   
   const [ListaVacina,setListaVacina] = useState([])
   const [NumVacina , setNumVacina] = useState(0)
+
+
+  /* Confirmação Cadastro */
+  const [visible,setVisible] = useState("none")
+  const [statusCores, setStatusCores] = useState(false)
 
 
   /* state */
@@ -65,6 +71,12 @@ function CadastrarVacinas() {
         dispatch(checkVacinas(ArrayListaVacina))
         dispatch(checkNumVacinas((NumVacina+1)))
 
+        setStatusCores(true)
+        setVisible("block")
+
+        setTimeout(()=>{
+          setVisible("none")
+        }, 2500)
 
       })
       .catch((ex) => console.log(ex));
@@ -200,6 +212,7 @@ function CadastrarVacinas() {
 
   return (
     <SectionMain>
+      <Confirmation  visible={visible} status={statusCores}/>
       <h1>Cadastre a vacina do seu Animal</h1>
       <div>
         <FormFlex onSubmit={enviarVacina}>
