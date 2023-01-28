@@ -11,7 +11,7 @@ import {
   DivBut,
 } from "./stylesLayout/CardStyle";
 
-function Card({ animal,listaAnimais,setListaAnimais }) {
+function Card({ animal,listaAnimais,setListaAnimais,setAtualizarLista }) {
 const [stateDelet, setStateDelet] = useState(false);
 const [stateEdit,setStateEdit] = useState(false);
 
@@ -39,6 +39,7 @@ const [stateEdit,setStateEdit] = useState(false);
           <EditAnimal 
             editAnimal={animal}
             setEditVisible={setStateEdit}
+            setAtualizarLista= {setAtualizarLista}
           />
         )
 

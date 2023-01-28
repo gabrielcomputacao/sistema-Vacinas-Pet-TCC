@@ -1,7 +1,12 @@
 
 import {DivConfirm} from "./stylesLayout/ConfirmarStyle"
+import {useDispatch} from "react-redux"
+import {checkHaveAnimais} from "../../redux/slice"
+
 
 function Confirmar({idanimais, setStateVisible, nome,listaA,setAnimais}){
+
+    const dispatch = useDispatch()
 
     function deletarAnimal(idanimal){
         fetch(`http://localhost:3005/deletanimal/${idanimal}` , {
@@ -14,9 +19,11 @@ function Confirmar({idanimais, setStateVisible, nome,listaA,setAnimais}){
         .then( (data) =>{
             console.log(data)
             console.log(listaA)
-            setAnimais( listaA.filter( (animal)=>{
+            const newLista = listaA.filter( (animal)=>{
                 return animal.id_animal != idanimais
-            }))
+            })
+            setAnimais( newLista)
+            dispatch(checkHaveAnimais(newLista))
         })
         .catch( ex => console.log(ex))
     }

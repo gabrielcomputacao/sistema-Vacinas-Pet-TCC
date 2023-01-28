@@ -17,6 +17,8 @@ export const slice = createSlice({
     numAnimais: 0,
     countAnimais: 1,
     countTiposVacina: 1,
+    editAnimais: 0,
+    editCountAnimais: 0,
   },
   reducers: {
     checkinUser(state, { payload }) {
@@ -78,6 +80,18 @@ export const slice = createSlice({
         countTiposVacina: payload,
       };
     },
+    checkEditAnimais(state, { payload }) {
+      return {
+        ...state,
+        editAnimais: payload,
+      };
+    },
+    checkCountEditAnimais(state, { payload }) {
+      return {
+        ...state,
+        editCountAnimais: payload,
+      };
+    },
   },
 });
 
@@ -91,6 +105,8 @@ export const {
   checkNumVacinas,
   checkTiposVacina,
   checkCountTiposVacina,
+  checkEditAnimais,
+  checkCountEditAnimais
 } = slice.actions;
 
 export default slice.reducer;

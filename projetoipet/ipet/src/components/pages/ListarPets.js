@@ -1,11 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ButtonLink from "../form/ButtonLink";
 import Card from "../layout/Card";
 import {DivAnimais} from "./stylepages/ListarPetsStyle"
 import {useSelector} from "react-redux";
+/* redux */
+import {useDispatch} from "react-redux"
+import {checkCountEditAnimais, checkHaveAnimais} from "../../redux/slice"
 
 function ListarPets() {
+
+  const dispatch = useDispatch()
+
   const [numeroPet, setnumeroPet] = useState(0);
+  const [atualizarLista, setAtualizarLista] = useState(0);
   const stateAtual = useSelector((state) => state.usercheck)
   const [animais, setAnimais] = useState({});
   const iduser = stateAtual.iduser
@@ -18,25 +25,30 @@ function ListarPets() {
     setnumeroPet(Object.keys(animaisState).length);
     setAnimais(animaisState);
 
+    if(stateAtual.editAnimais != stateAtual.editCountAnimais ){
+     
 
-   /*  fetch(`http://localhost:3005/getanimais/${iduser}`,{
-      method:'GET',
-      headers:{
-        "Content-Type": "application/json"
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.rows);
-        setnumeroPet(data.rowCount);
-        setAnimais(data.rows);
+      console.log("requisição animais")
+
+      fetch(`http://localhost:3005/getanimais/${iduser}`,{
+        method:'GET',
+        headers:{
+          "Content-Type": "application/json"
+        }
       })
-      .catch((ex) => console.log(ex)); */
+        .then((res) => res.json())
+        .then((data) => {
+          //redux
+          dispatch(checkCountEditAnimais((stateAtual.editAnimais)))
+          dispatch(checkHaveAnimais(data.rows))
+          console.log(data.rows);
+          setnumeroPet(data.rowCount);
+          setAnimais(data.rows);
 
-
-
-
-  }, []);
+        })
+        .catch((ex) => console.log(ex));
+    }
+  }, [atualizarLista]);
 
   return (
     <section>
@@ -61,7 +73,9 @@ function ListarPets() {
           {numeroPet > 0 &&
             animais.map((element, index) => (
               
-              <Card animal={element} contador={index} key={index} listaAnimais={animais} setListaAnimais={setAnimais}/>
+              <Card animal={element} contador={index} key={index} listaAnimais={animais} setListaAnimais={setAnimais}
+                setAtualizarLista= {setAtualizarLista}
+              />
               
             ))}
 

@@ -6,8 +6,18 @@ import { useState } from "react";
 import { DivForm, FormStyle,DivButtonExluir } from "./stylepages/EditAnimalStyle";
 import { IoCloseSharp } from "react-icons/io5";
 
-function EditAnimal({ editAnimal, setEditVisible }) {
+/* redux */
+import {useDispatch} from "react-redux"
+import {checkEditAnimais} from "../../redux/slice"
+import {useSelector} from "react-redux";
+
+
+function EditAnimal({ editAnimal, setEditVisible,setAtualizarLista }) {
+
+  const dispatch = useDispatch()
   const [editarAnimal, setEditarAnimal] = useState(editAnimal || {});
+  const stateAtual = useSelector((state) => state.usercheck)
+ 
 
   function capturarEditAnimal(e) {
     setEditarAnimal({
@@ -39,9 +49,12 @@ function EditAnimal({ editAnimal, setEditVisible }) {
       .then((resp) => resp.json())
       .then((data) => {
         console.log(data);
+        dispatch(checkEditAnimais((stateAtual.editAnimais + 1)))
+        setAtualizarLista(1)
 
         setTimeout(() => {
           setEditVisible(false);
+          
         }, 1000);
       });
   }

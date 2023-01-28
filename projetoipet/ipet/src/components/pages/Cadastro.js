@@ -64,7 +64,7 @@ function Cadastro() {
           setTimeout(()=>{
             
             navigate("/")
-          } , 4000)
+          } , 2000)
         })
         .catch( error => console.log(error))
 
