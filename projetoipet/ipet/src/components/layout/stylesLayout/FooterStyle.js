@@ -7,7 +7,7 @@ export const DivFooter = styled.div`
     flex-wrap: wrap;
     align-items: center;
     flex-direction: row;
-    background-color: yellowgreen;
+    background-color: #00975c;
 
     @media screen and (max-width:780px){
         align-items: flex-start;
@@ -21,6 +21,8 @@ export const DivFooter = styled.div`
 export const Imagem = styled.img`
     width: 90px;
     height: 60px;
+    mix-blend-mode: multiply;
+
 `
 
 export const DivTexto = styled.div`
@@ -70,7 +72,7 @@ export const DivContatos = styled.div`
 
 export const Copy = styled.p`
     color: #fff;
-    background-color: #222;
+    background-color:#292929;
     text-align: center;
     padding: .4em;
 

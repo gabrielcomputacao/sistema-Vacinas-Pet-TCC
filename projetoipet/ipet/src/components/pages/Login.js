@@ -3,7 +3,7 @@ import ButtonLink from "../form/ButtonLink.js";
 import Input from "../form/Input.js";
 import { Section } from "./stylepages/LoginStyle.js";
 import ipetImage from "../../img/ipet.png";
-import fundoAnimais from "../../img/fundo_animais2.jpg";
+import fundoAnimais from "../../img/fundocat.webp";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -74,10 +74,11 @@ function Login() {
           <Message msg="Senha ou password incorretos" tipo="danger"></Message>
         )}
 
-        <h1>Ipet | Sistema de Vacinação</h1>
+        
         <div>
           <form onSubmit={submit}>
             <img src={ipetImage} alt="Ipet | Sistema de Vacinação de Pet's" />
+            <h4>Gerenciamento de Vacinas para Animais</h4>
             <Input handleOnChange={obterDados} tipo="text" texto="Usuario" />
             <Input handleOnChange={obterDados} tipo="password" texto="Senha" />
 

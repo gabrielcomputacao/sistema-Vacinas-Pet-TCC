@@ -15,10 +15,11 @@ export const DivCard = styled.div`
     padding: .8em;
     margin: .5em;
     border: 1px solid gray;
-    border-radius: 5px;
+    border-radius: 4px;
     width: 250px;
     height: auto;
-    background-color: #e9e9e9;
+    background-color: #C0C0C0;
+    border-top: 5px solid #0a5f55 ;
 `
 
 
@@ -39,7 +40,9 @@ export const Pitens = styled.p`
     margin:.4em 0;
 
     span{
+        font-weight: bold;
         font-size: 16px;
+        color: #222;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 `
@@ -56,6 +59,6 @@ export const ButtonStyled = styled.button`
 
 export const DivBut = styled.div`
     display: flex;
-    justify-content: right;
+    justify-content: space-around;
     align-items: center;
 `

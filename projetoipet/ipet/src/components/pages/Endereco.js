@@ -7,7 +7,7 @@ import {
   DivEndereco,
   SecEnd,
 } from "./stylepages/EnderecoStyle";
-import fundo from "../../img/fundo_animais2.jpg";
+import fundo from "../../img/fundocat.webp";
 import familiaAnimal from "../../img/family_animals2.webp";
 import { useNavigate } from "react-router-dom";
 

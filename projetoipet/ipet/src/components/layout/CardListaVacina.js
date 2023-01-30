@@ -7,7 +7,7 @@ import {CardDivLista,HeaderCardLista,BodyCardLista} from "./stylesLayout/CardLis
         <CardDivLista>
             <HeaderCardLista>
                 <h3>Vacina: {props.lista.nomevacina}</h3>
-                <h4>Pet: {props.lista.nomeanimal}</h4>
+                <h4>Animal: {props.lista.nomeanimal}</h4>
             </HeaderCardLista>
             <BodyCardLista>
                 <p>Data da Vacinação : {props.lista.datavacinacao}</p>

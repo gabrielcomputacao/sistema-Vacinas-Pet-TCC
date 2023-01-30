@@ -5,6 +5,9 @@ export const Section = styled.section`
 
     position: relative;
     background-image: url(${props => props.fundo});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #a8bfa0;
     height: 100vh;
 
     > div{
@@ -32,6 +35,7 @@ export const Section = styled.section`
         img{
             width: 200px;
             height: 100px;
+            margin-bottom: .4em;
         }
     }
 
@@ -39,5 +43,9 @@ export const Section = styled.section`
         text-align: center;
         color: green;
         font-size: 42px;
+    }
+
+    @media screen and (max-width:1000px){
+        background-image: none;
     }
 `

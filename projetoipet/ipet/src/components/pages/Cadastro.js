@@ -3,8 +3,8 @@ import {useNavigate} from "react-router-dom"
 import Button from "../form/Button";
 import Input from "../form/Input";
 import {Section} from "./stylepages/CadastroStyle"
-import gato from "../../img/gato.jpg"
-import fundo from "../../img/fundo_animais2.jpg"
+import gato from "../../img/ipet.png"
+import fundo from "../../img/fundocat.webp"
 import Message from "../layout/Message"
 
 /* redux */
@@ -83,6 +83,7 @@ function Cadastro() {
       {message && <Message msg={message}></Message>}
       <div>
         <img src={gato} alt="Ipet | Cadastro" />
+        <h3>Gerenciamento de Vacinas para Animais</h3>
         <h1>Cadastrar Usuário</h1>
         <form onSubmit={submitCadastro}>
           <Input handleOnChange={cadastrarDados} tipo="text" texto="Nome" />

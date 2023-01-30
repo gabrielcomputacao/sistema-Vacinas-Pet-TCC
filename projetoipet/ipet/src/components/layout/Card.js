@@ -54,14 +54,14 @@ const [stateEdit,setStateEdit] = useState(false);
           </ButtonStyled>
         </DivBut>
         <DivSvg>
-          <FaDog />
+            <h2>{animal.nome}</h2>
         </DivSvg>
         <div>
           <div>
-            <Pitens>
+            {/* <Pitens>
               
               <span>Nome: {animal.nome}</span>
-            </Pitens>
+            </Pitens> */}
             <hr />
             <Pitens>
               

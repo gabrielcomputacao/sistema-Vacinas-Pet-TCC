@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DivNavbar = styled.div`
   height: 80px;
   width: 100%;
-  background-color: green;
+  background-color:#00975c;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -16,6 +16,7 @@ export const Imagem = styled.img`
   width: 100px;
   height: 60px;
   padding: 0.5em;
+  mix-blend-mode: multiply;
 `;
 
 export const Navegacao = styled.nav`

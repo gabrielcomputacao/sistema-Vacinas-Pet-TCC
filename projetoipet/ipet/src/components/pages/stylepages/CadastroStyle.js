@@ -9,7 +9,9 @@ export const Section = styled.section`
     flex-direction: column;
     height: 100vh;
     background-image: url(${props => props.background});
-    
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #a8bfa0;
 
     > div{
         border: 1px solid green;
@@ -25,15 +27,19 @@ export const Section = styled.section`
     }
 
     img{
-        width: 100px;
+        width: 200px;
         height: 100px;
-        border-radius: 50%;
-        border: 2px solid green;
+        margin-bottom: .4em;
+        
     }
 
     h1{
         font-size: 38px;
         color: green;
+    }
+
+    h3{
+        margin-bottom: .8em;
     }
 
     form{

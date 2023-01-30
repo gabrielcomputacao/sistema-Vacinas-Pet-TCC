@@ -9,7 +9,7 @@ export const CardDivLista = styled.div`
     border: 1px solid #dadada;
     border-radius: 5px;
     background-color: #FFF0F5;
-
+    border-top: 4px solid #0a5f55;
     &:hover{
         box-shadow: 0 0 20px 0 rgb(36 36 36 / 40%);
     }
