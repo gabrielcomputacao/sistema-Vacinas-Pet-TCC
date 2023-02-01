@@ -1,14 +1,17 @@
 
-const poolDatabase = require("../infra/database/poolDatabase")
+/* const poolDatabase = require("../infra/database/poolDatabase") */
+const poolDatabase = require("../infra/database/databaseMysql")
+
+
 
 exports.InsertEndereco = async function(user){
     try{
 
         const dataB = await poolDatabase()
-        const sql = 'INSERT INTO endereco(rua,cep,bairro,numero,cidade,estado,referencia) VALUES ($1,$2,$3,$4,$5,$6,$7);';
+        const sql = 'INSERT INTO endereco(rua,cep,bairro,numero,cidade,estado,referencia) VALUES (?,?,?,?,?,?,?);';
         const values = [user.rua,user.cep,user.bairro,user.numero,user.cidade,user.estado,user.referencia];
         const endereco = await dataB.query(sql,values)
-        await dataB.end();
+       /*  await dataB.end(); */
         return endereco;
 
     }catch(ex){
