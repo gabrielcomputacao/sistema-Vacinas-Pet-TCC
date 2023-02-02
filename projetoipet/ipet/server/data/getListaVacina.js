@@ -1,5 +1,5 @@
 
-const database = require("../infra/database/poolDatabase")
+const database = require("../infra/database/databaseMysql")
 
 
 exports.getListaVacina = async function (iduser){
@@ -7,12 +7,12 @@ exports.getListaVacina = async function (iduser){
     try {
         
         const dataB = await database();
-        const sql = "SELECT *FROM aplicacao WHERE iduser = $1";
+        const sql = "SELECT *FROM aplicacao WHERE iduser = ?";
         const values = [iduser]
-        const listaVacina = await dataB.query(sql,values);
-        await dataB.end();
+        const [rows] = await dataB.query(sql,values);
+        /* await dataB.end(); */
 
-        return listaVacina;
+        return rows;
 
     } catch (error) {
         console.log(error)

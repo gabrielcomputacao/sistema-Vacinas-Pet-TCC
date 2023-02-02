@@ -1,5 +1,5 @@
 
-const database = require("../infra/database/poolDatabase")
+const database = require("../infra/database/databaseMysql")
 
 
 exports.deletAnimal = async function(id){
@@ -7,14 +7,14 @@ exports.deletAnimal = async function(id){
 
     try {
         const dataB =  await database();
-         const sql = "DELETE from animal where id_animal= $1"
+         const sql = "DELETE from animal where id_animal= ?"
         const values = [id];
 
-        const result = await dataB.query(sql,values);
+        const [rows] = await dataB.query(sql,values);
 
-        await dataB.end();
+        /* await dataB.end(); */
 
-        return result;
+        return rows;
         
     } catch (error) {
         console.log(error)

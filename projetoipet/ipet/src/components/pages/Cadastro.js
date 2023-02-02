@@ -37,20 +37,20 @@ function Cadastro() {
       })
       .then( res => res.json())
       .then( data =>{
-        console.log(data.rows[0].id_endereco)
+       /*  console.log(data[0].id_endereco) */
         setDadosCadastro({
           ...dadosCadastro,
-          ['idendereco'] : data.rows[0].id_endereco,
+          ['idendereco'] : data[0].id_endereco,
         })
       })
       .catch( ex => console.log(ex))
     } , [])
 
-    console.log(dadosCadastro)
+    /* console.log(dadosCadastro) */
 
     function submitCadastro(e){
         e.preventDefault()
-        console.log(dadosCadastro)
+        /* console.log(dadosCadastro) */
         fetch('http://localhost:3005/cadastrousuario',{
           method:'post',
           headers:{
@@ -59,7 +59,7 @@ function Cadastro() {
           body: JSON.stringify(dadosCadastro)
         }).then( res => res.json())
         .then( text => {
-          console.log(text)
+          /* console.log(text) */
           setMessage('Cadastrado com Sucesso!')
           setTimeout(()=>{
             

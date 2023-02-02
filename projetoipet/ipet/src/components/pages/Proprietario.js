@@ -37,7 +37,7 @@ function Proprietario() {
 
   function submitProprietario(e){
     e.preventDefault()
-    console.log(proprietario)
+    /* console.log(proprietario) */
 
     fetch('http://localhost:3005/cadproprietario' , {
       method: 'post',
@@ -48,7 +48,7 @@ function Proprietario() {
     })
     .then( res => res.json())
     .then(data => {
-      console.log(data)
+      /* console.log(data) */
       setStatusCores(true)
       setVisible("block")
 

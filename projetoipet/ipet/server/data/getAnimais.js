@@ -1,18 +1,18 @@
 
-const database = require("../infra/database/poolDatabase")
+const database = require("../infra/database/databaseMysql")
 
 
 exports.getAnimais = async function(iduser){
 
     try {
         const dataB = await database();
-        const sql = "SELECT *from animal WHERE cod_usuario = $1";
+        const sql = "SELECT *from animal WHERE cod_usuario = ?";
         const values = [iduser]
-        const animais = await dataB.query(sql,values);
+        const [rows] = await dataB.query(sql,values);
 
-        dataB.end();
+        
 
-        return animais;
+        return rows;
         
     } catch (error) {
         console.log(error)

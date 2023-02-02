@@ -14,21 +14,21 @@ function ListarPets() {
   const [numeroPet, setnumeroPet] = useState(0);
   const [atualizarLista, setAtualizarLista] = useState(0);
   const stateAtual = useSelector((state) => state.usercheck)
-  const [animais, setAnimais] = useState({});
+  const [animaisLista, setAnimaisLista] = useState([]);
   const iduser = stateAtual.iduser
-  const animaisState = stateAtual.animais
+  const animaisState = stateAtual.animais || []
 
   useEffect(() => {
 
     /* console.log(Object.keys(animaisState).length,animaisState) */
-
-    setnumeroPet(Object.keys(animaisState).length);
-    setAnimais(animaisState);
+    /* console.log(stateAtual,animaisState) */
+    setnumeroPet(animaisState.length);
+    setAnimaisLista(animaisState);
 
     if(stateAtual.editAnimais != stateAtual.editCountAnimais ){
      
 
-      console.log("requisição animais")
+      /* console.log("requisição animais") */
 
       fetch(`http://localhost:3005/getanimais/${iduser}`,{
         method:'GET',
@@ -39,11 +39,12 @@ function ListarPets() {
         .then((res) => res.json())
         .then((data) => {
           //redux
+          /* console.log(data.rows) */
           dispatch(checkCountEditAnimais((stateAtual.editAnimais)))
-          dispatch(checkHaveAnimais(data.rows))
-          console.log(data.rows);
-          setnumeroPet(data.rowCount);
-          setAnimais(data.rows);
+          dispatch(checkHaveAnimais(data))
+          /* console.log(data,"teste",data[0],data.rows); */
+          setnumeroPet(data.length);
+          setAnimaisLista(data);
 
         })
         .catch((ex) => console.log(ex));
@@ -71,9 +72,9 @@ function ListarPets() {
         <h1>Seus Animais</h1>
         <DivAnimais>
           {numeroPet > 0 &&
-            animais.map((element, index) => (
+            animaisLista.map((element, index) => (
               
-              <Card animal={element} contador={index} key={index} listaAnimais={animais} setListaAnimais={setAnimais}
+              <Card animal={element} contador={index} key={index} listaAnimais={animaisLista} setListaAnimais={setAnimaisLista}
                 setAtualizarLista= {setAtualizarLista}
               />
               

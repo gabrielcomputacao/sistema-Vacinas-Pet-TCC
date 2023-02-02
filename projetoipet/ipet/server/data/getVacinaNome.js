@@ -1,4 +1,4 @@
-const database = require("../infra/database/poolDatabase")
+const database = require("../infra/database/databaseMysql")
 
 exports.getVacinaNome = async function(){
 
@@ -7,9 +7,9 @@ exports.getVacinaNome = async function(){
         const dataB = await database();
         const sql = "SELECT *from vacina";
         
-        const result = await dataB.query(sql);
-        await dataB.end();
-        return result;
+        const [rows] = await dataB.query(sql);
+        /* await dataB.end(); */
+        return rows;
 
     } catch (error) {
         console.log(error)

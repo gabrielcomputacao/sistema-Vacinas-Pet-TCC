@@ -17,8 +17,9 @@ function AnimaisCadastro() {
     const [animaisDados,setAnimaisDados] = useState({})
     const [arrayAnimais,setArrayAnimais] = useState([])
     const iduser = stateUser.iduser;
+    const animaisState = stateUser.animais
     /* parte de controle de requisição para lista de animais */
-    const [animais,setAnimais] = useState(stateUser.animais)
+    const [animais,setAnimais] = useState(animaisState)
     const [countAnimais,setCountAnimais] = useState(stateUser.countAnimais)
     const [numAnimais,setNumAnimais] = useState(stateUser.numAnimais)
     const dispatch = useDispatch();
@@ -40,7 +41,7 @@ function AnimaisCadastro() {
     function capturarDadosAnimal(e){
         setAnimaisDados( {...animaisDados,
             [e.target.name] : e.target.value})
-            console.log(animaisDados)
+            /* console.log(animaisDados) */
     }
 
     function capturaSelectAnimal(e){
@@ -52,7 +53,7 @@ function AnimaisCadastro() {
 
     function submitDadosAnimal(e){
         e.preventDefault()
-        console.log(animaisDados)
+        /* console.log(animaisDados) */
 
         fetch( 'http://localhost:3005/cadastroanimais' , {
           method: 'post',
@@ -63,8 +64,9 @@ function AnimaisCadastro() {
         })
         .then( res => res.json())
         .then(data =>{
-          console.log(data)
-
+         /*  console.log(data)
+          console.log(animais) */
+          
           animais.map( element =>{
             arrayAnimais.push(element)
           })
@@ -72,7 +74,7 @@ function AnimaisCadastro() {
           
           arrayAnimais.push(animaisDados)
 
-          console.log(arrayAnimais)
+         /*  console.log(arrayAnimais) */
 
 
           dispatch(checkHaveAnimais(arrayAnimais));
@@ -91,7 +93,7 @@ function AnimaisCadastro() {
           console.log(ex)
         } )
         
-        console.log(animaisDados)
+        /* console.log(animaisDados) */
     }
 
   return (

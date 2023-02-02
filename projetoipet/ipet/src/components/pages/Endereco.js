@@ -52,7 +52,7 @@ function Endereco() {
       [e.target.name]: e.target.value,
     });
 
-    console.log(dadosEndereco);
+    /* console.log(dadosEndereco); */
   }
 
   return (

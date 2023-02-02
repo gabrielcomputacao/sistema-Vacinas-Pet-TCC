@@ -13,8 +13,8 @@ function Selection({ name, text, options, handleOnChange, value }) {
       const response = await fetch(`http://localhost:3005/getpropnomes/${iduser}`);
       const responseJson = await response.json();
 
-      console.log(responseJson.rows)
-      setNomes(responseJson.rows);
+      /* console.log(responseJson) */
+      setNomes(responseJson);
     }
 
     selectProprietarios();

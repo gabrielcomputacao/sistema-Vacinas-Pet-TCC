@@ -24,7 +24,7 @@ function Sobre() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-
+    /* console.log(state) */
     /* console.log(NumeroAnimais , ContAnimais , "TESTE") */
 
     if (ContAnimais !== NumeroAnimais) {
@@ -36,16 +36,19 @@ function Sobre() {
       })
         .then((resp) => resp.json())
         .then((dados) => {
-          /* console.log(dados);
-          console.log(NumeroAnimais); */
-          setPossuiAnimal(dados.rows);
-
-          setNumeroAnimais(dados.rowCount)
+          /* console.log(dados,dados.length,dados[0]); */
 
 
-          dispatch(checkHaveAnimais(dados.rows));
-          dispatch(checkNumAnimais(dados.rowCount));
-          dispatch(checkCountAnimais(dados.rowCount));
+          /* console.log(NumeroAnimais); */
+          
+          
+          setPossuiAnimal(dados);
+
+          setNumeroAnimais(dados.length)
+
+          dispatch(checkHaveAnimais(dados));
+          dispatch(checkNumAnimais(dados.length));
+          dispatch(checkCountAnimais(dados.length));
         })
         .catch((ex) => console.log(ex));
     }

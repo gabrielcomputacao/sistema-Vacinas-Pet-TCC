@@ -1,16 +1,16 @@
 
-const database = require('../infra/database/poolDatabase')
+const database = require('../infra/database/databaseMysql')
 
 exports.getProprietario = async function(stateUser){
 
     try {
 
         const dataB = await database();
-        const sql = "SELECT nome from proprietario WHERE id_user= $1";
+        const sql = "SELECT nome from proprietario WHERE id_user= ?";
         let values = [stateUser];
-        const nomes = await dataB.query(sql, values);
-        await dataB.end();
-        return nomes;
+        const [rows] = await dataB.query(sql, values);
+        /* await dataB.end(); */
+        return rows;
 
     } catch (error) {
         console.log(error)

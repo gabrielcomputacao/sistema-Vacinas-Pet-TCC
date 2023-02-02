@@ -24,7 +24,7 @@ function EditAnimal({ editAnimal, setEditVisible,setAtualizarLista }) {
       ...editarAnimal,
       [e.target.name]:  e.target.value,
     });
-    console.log(editAnimal)
+    /* console.log(editAnimal) */
   }
 
   function capturaSelectEditAnimal(e) {
@@ -48,7 +48,7 @@ function EditAnimal({ editAnimal, setEditVisible,setAtualizarLista }) {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
+        /* console.log(data); */
         dispatch(checkEditAnimais((stateAtual.editAnimais + 1)))
         setAtualizarLista(1)
 

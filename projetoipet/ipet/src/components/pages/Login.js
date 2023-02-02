@@ -31,6 +31,10 @@ function Login() {
   function submit(e) {
     e.preventDefault();
 
+
+   /*  console.log(dados) */
+
+
     fetch("http://localhost:3005/login", {
       method: "post",
       headers: {
@@ -40,12 +44,13 @@ function Login() {
     })
       .then((resposta) => resposta.json())
       .then((data) => {
-        if (data.rowCount === 1) {
+        
+        if (data.length === 1) {
           setStateMessage(true);
           setUnidadeMessage(1);
           dispatch(checkinUser({
-            name: data.rows[0].nome,
-            idusuario : data.rows[0].id,
+            name: data[0].nome,
+            idusuario : data[0].id,
           }))
           setTimeout(()=>{
               setStateMessage(false)

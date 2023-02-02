@@ -1,14 +1,17 @@
-const database = require("../infra/database/poolDatabase")
+const database = require("../infra/database/databaseMysql")
 
 
 exports.getEnd = async function(endereco){
     try {
         const dataB =  await database();
-        const sql = "SELECT id_endereco from endereco WHERE rua=$1 AND cep=$2 AND numero=$3";
+        const sql = "SELECT id_endereco from endereco WHERE rua=? AND cep=? AND numero=?";
         let values = [endereco.rua , endereco.cep , endereco.numero];
-        const dado = await dataB.query(sql , values);
-        await dataB.end();
-        return dado;
+        const [rows] = await dataB.query(sql , values);
+        /* await dataB.end(); */
+
+        console.log(rows)
+
+        return rows;
 
     } catch (error) {
          console.log(error)

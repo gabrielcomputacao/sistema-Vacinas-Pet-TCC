@@ -34,10 +34,10 @@ function ListarVacinas(){
         .then( resp => resp.json())
         .then( data =>{
             
-            setListaVacina(data.rows)
+            setListaVacina(data)
 
-            dispatch(checkVacinas(data.rows))
-            dispatch(checkNumVacinas(data.rowCount))
+            dispatch(checkVacinas(data))
+            dispatch(checkNumVacinas(data.length))
         })
         .catch( ex => console.log(ex))
 

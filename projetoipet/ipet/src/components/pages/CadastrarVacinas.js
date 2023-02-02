@@ -58,7 +58,7 @@ function CadastrarVacinas() {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
+        /* console.log(data); */
 
         ListaVacina.map( element =>{
           ArrayListaVacina.push(element)
@@ -66,7 +66,7 @@ function CadastrarVacinas() {
 
         ArrayListaVacina.push(DadosVacina)
 
-        console.log(ArrayListaVacina);
+        /* console.log(ArrayListaVacina); */
 
         dispatch(checkVacinas(ArrayListaVacina))
         dispatch(checkNumVacinas((NumVacina+1)))
@@ -184,14 +184,21 @@ function CadastrarVacinas() {
 
   useEffect(() => {
    /*  console.log(Object.keys(tiposVacina).length);
-    console.log(countTiposVacina); */
+    console.log(countTiposVacina);
+    console.log(stateAtual) */
+    /* console.log(stateAtual)
+    console.log(nomeAnimais) */
 
-   setListaVacina(stateAtual.vacinas)
-   setNumVacina(stateAtual.countVacinas)
-
-    setVacina(tiposVacina);
+      setListaVacina(stateAtual.vacinas)
+      setNumVacina(stateAtual.countVacinas)
+      setVacina(tiposVacina);
 
     if (Object.keys(tiposVacina).length !== countTiposVacina) {
+/* 
+      console.log(Object.keys(tiposVacina).length)
+      console.log(countTiposVacina) */
+
+
       fetch("http://localhost:3005/vacinacao", {
         method: "GET",
         headers: {
@@ -202,9 +209,9 @@ function CadastrarVacinas() {
         .then((data) => {
           /* console.log(data); */
 
-          dispatch(checkTiposVacina(data.rows));
-          dispatch(checkCountTiposVacina(data.rowCount));
-          setVacina(data.rows);
+          dispatch(checkTiposVacina(data));
+          dispatch(checkCountTiposVacina(data.length));
+          setVacina(data);
         })
         .catch((ex) => console.log(ex));
     }
