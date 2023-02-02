@@ -1,13 +1,14 @@
 import styled from "styled-components"
 
 export const DivFooter = styled.div`
-    padding: 1.5em;
+    padding: .7em .4em .3em .4em;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
     flex-direction: row;
     background-color: #00975c;
+    margin-top: .2em;
 
     @media screen and (max-width:780px){
         align-items: flex-start;
@@ -19,10 +20,10 @@ export const DivFooter = styled.div`
 `
 
 export const Imagem = styled.img`
-    width: 90px;
+    width: 100px;
     height: 60px;
     mix-blend-mode: multiply;
-
+    margin-left: 1.5em;
 `
 
 export const DivTexto = styled.div`
@@ -45,7 +46,7 @@ export const DivTexto = styled.div`
 `
 
 export const DivContatos = styled.div`
-
+    margin-right: 6em;
     h4{
         text-align: center;
     }

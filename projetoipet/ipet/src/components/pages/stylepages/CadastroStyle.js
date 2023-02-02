@@ -49,6 +49,7 @@ export const Section = styled.section`
         align-items: center;
     }
 
+
     @media screen and (max-width:650px){
         > div{
             width: 95%;
@@ -59,4 +60,13 @@ export const Section = styled.section`
         }
     }
 
+`
+
+export const SelectionCadastro = styled.select`
+    padding: .4em;
+    margin: 1.5em 0;
+    border: 1px solid green;
+    border-radius: 5px;
+    transition: 1s all;
+    min-width: 180px;
 `

@@ -76,8 +76,10 @@ function Sobre() {
               <br />
               <br /> Assim, o objetivo principal deste estudo é o
               desenvolvimento de um sistema web para facilitar uma melhor
-              verificação e organização das vacinas, vermífugos e
-              antiparasitários dos bichinhos através da marcação de vacinas.
+              verificação e organização a princípio das vacinas, futuramente também irá abrangir vermífugos e
+              antiparasitários dos bichinhos através da marcação no Ipet.
+              <br />
+              <br />
             </p>
           </div>
           <ButtonLink

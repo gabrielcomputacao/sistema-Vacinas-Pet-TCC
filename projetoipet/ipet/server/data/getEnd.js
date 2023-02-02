@@ -9,7 +9,7 @@ exports.getEnd = async function(endereco){
         const [rows] = await dataB.query(sql , values);
         /* await dataB.end(); */
 
-        console.log(rows)
+        /* console.log(rows) */
 
         return rows;
 

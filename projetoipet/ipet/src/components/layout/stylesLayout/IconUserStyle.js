@@ -7,6 +7,8 @@ export const DivUsuario = styled.div`
     justify-content: center;
     align-items: center;
     width: 200px;
+    cursor: pointer;
+
     p{
         font-weight: bold;
         margin-left: .4em;

@@ -7,7 +7,7 @@ function Input({texto,tipo,handleOnChange,placeholder,value}){
         <Div>
             <Label htmlFor={texto.toLowerCase()}>{texto}</Label>
             <InputSty onChange={handleOnChange} name={texto.toLowerCase()} type={tipo}
-            placeholder={placeholder} value={value}
+            placeholder={placeholder} value={value} step="0.001"
             />
         </Div>
     )

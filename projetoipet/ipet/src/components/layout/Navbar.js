@@ -12,10 +12,12 @@ import {
 } from "./stylesLayout/NavbarStyle";
 import IconUser from "./IconUser";
 import { useState } from "react";
+import Tool from "./Tool";
 
 function Navbar() {
 
   const [visible,setVisible] = useState("none")
+  const [exit,setExit] = useState(false)
 
   function setVisivel(){
 
@@ -52,7 +54,10 @@ function Navbar() {
           </ul>
         </Navegacao>
         <MobileButtons>
-          <IconUser />
+          <IconUser clicar={setExit} />
+          {
+            exit && <Tool  />
+          }
           <ButtonHamburguer onClick={setVisivel}>
             <label htmlFor="">
               <span></span>

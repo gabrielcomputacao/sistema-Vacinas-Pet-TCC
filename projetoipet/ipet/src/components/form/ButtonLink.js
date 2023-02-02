@@ -4,10 +4,12 @@ import { ButtonLinkStyle } from "./stylesform/ButtonsStyle"
 
 function ButtonLink({text,tipo,where}){
     return(
-
+        <Link to={where}>
         <ButtonLinkStyle type={tipo}>
-            <Link to={where}>{text}</Link>
+            {text}
         </ButtonLinkStyle>
+        </Link>
+        
     )
 }
 
