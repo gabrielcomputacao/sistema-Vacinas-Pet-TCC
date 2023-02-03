@@ -49,7 +49,7 @@ function CadastrarVacinas() {
   function enviarVacina(e) {
     e.preventDefault();
 
-    fetch("http://localhost:3005/cadastrarvacina", {
+    fetch("https://ipet-backend.vercel.app/cadastrarvacina", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -199,7 +199,7 @@ function CadastrarVacinas() {
       console.log(countTiposVacina) */
 
 
-      fetch("http://localhost:3005/vacinacao", {
+      fetch("https://ipet-backend.vercel.app/vacinacao", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

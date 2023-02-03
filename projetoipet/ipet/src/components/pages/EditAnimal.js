@@ -38,7 +38,7 @@ function EditAnimal({ editAnimal, setEditVisible,setAtualizarLista }) {
   function handleSubmitEdit(e) {
     e.preventDefault();
 
-    fetch("http://localhost:3005/editanimal", {
+    fetch("https://ipet-backend.vercel.app/editanimal", {
       headers: {
         "Content-Type": "application/json",
         

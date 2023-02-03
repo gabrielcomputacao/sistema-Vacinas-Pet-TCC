@@ -39,7 +39,7 @@ function Proprietario() {
     e.preventDefault()
     /* console.log(proprietario) */
 
-    fetch('http://localhost:3005/cadproprietario' , {
+    fetch('https://ipet-backend.vercel.app/cadproprietario' , {
       method: 'post',
       headers:{
         'Content-Type': 'application/json'

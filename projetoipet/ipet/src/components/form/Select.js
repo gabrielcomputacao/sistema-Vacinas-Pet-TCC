@@ -10,7 +10,7 @@ function Selection({ name, text, options, handleOnChange, value }) {
   useEffect(() => {
 
     const selectProprietarios = async ()=>{
-      const response = await fetch(`http://localhost:3005/getpropnomes/${iduser}`);
+      const response = await fetch(`https://ipet-backend.vercel.app/getpropnomes/${iduser}`);
       const responseJson = await response.json();
 
       /* console.log(responseJson) */

@@ -28,7 +28,7 @@ function Sobre() {
     /* console.log(NumeroAnimais , ContAnimais , "TESTE") */
 
     if (ContAnimais !== NumeroAnimais) {
-      fetch(`http://localhost:3005/nomeanimais/${state.iduser}`, {
+      fetch(`https://ipet-backend.vercel.app/nomeanimais/${state.iduser}`, {
         headers: {
           "Content-Type": "application/json",
         },

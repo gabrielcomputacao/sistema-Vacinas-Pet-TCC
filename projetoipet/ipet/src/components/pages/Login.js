@@ -35,7 +35,7 @@ function Login() {
    /*  console.log(dados) */
 
 
-    fetch("http://localhost:3005/login", {
+    fetch("https://ipet-backend.vercel.app/login", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

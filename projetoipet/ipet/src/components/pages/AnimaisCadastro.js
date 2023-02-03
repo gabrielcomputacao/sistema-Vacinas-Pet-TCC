@@ -55,7 +55,7 @@ function AnimaisCadastro() {
         e.preventDefault()
         /* console.log(animaisDados) */
 
-        fetch( 'http://localhost:3005/cadastroanimais' , {
+        fetch( 'https://ipet-backend.vercel.app/cadastroanimais' , {
           method: 'post',
           headers:{
             "Content-Type": "application/json"

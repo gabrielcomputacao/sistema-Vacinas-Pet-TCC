@@ -25,7 +25,7 @@ function Endereco() {
   function enderecoSubmit(e) {
     e.preventDefault();
 
-    fetch("http://localhost:3005/endereco", {
+    fetch("https://ipet-backend.vercel.app/endereco", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

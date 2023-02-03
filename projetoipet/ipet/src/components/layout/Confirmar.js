@@ -9,7 +9,7 @@ function Confirmar({idanimais, setStateVisible, nome,listaA,setAnimais}){
     const dispatch = useDispatch()
 
     function deletarAnimal(idanimal){
-        fetch(`http://localhost:3005/deletanimal/${idanimal}` , {
+        fetch(`https://ipet-backend.vercel.app/deletanimal/${idanimal}` , {
             method: 'DELETE',
             headers:{
                 "Content-Type": "application/json",
@@ -17,8 +17,8 @@ function Confirmar({idanimais, setStateVisible, nome,listaA,setAnimais}){
         })
         .then((res) => res.json())
         .then( (data) =>{
-            console.log(data)
-            console.log(listaA)
+            /* console.log(data)
+            console.log(listaA) */
             const newLista = listaA.filter( (animal)=>{
                 return animal.id_animal != idanimais
             })

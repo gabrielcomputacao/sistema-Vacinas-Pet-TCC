@@ -30,7 +30,7 @@ function ListarPets() {
 
       /* console.log("requisição animais") */
 
-      fetch(`http://localhost:3005/getanimais/${iduser}`,{
+      fetch(`https://ipet-backend.vercel.app/getanimais/${iduser}`,{
         method:'GET',
         headers:{
           "Content-Type": "application/json"

@@ -29,7 +29,7 @@ function Cadastro() {
     useEffect(()=>{
       /* console.log(endereco) */
 
-      fetch('http://localhost:3005/idendereco' , {
+      fetch('https://ipet-backend.vercel.app/idendereco' , {
         method:'post',
         headers:{
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ function Cadastro() {
     function submitCadastro(e){
         e.preventDefault()
         /* console.log(dadosCadastro) */
-        fetch('http://localhost:3005/cadastrousuario',{
+        fetch('https://ipet-backend.vercel.app/cadastrousuario',{
           method:'post',
           headers:{
               "Content-Type": "application/json"
